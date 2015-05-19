@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -13,12 +14,16 @@ namespace Forhandlingsspil
         SpriteBatch spriteBatch;
         private static byte roundCounter;
         private bool isPreparing;
+        public static SpriteFont font;
 
         public static byte RoundCounter
         {
             get { return GameWorld.roundCounter; }
             set { GameWorld.roundCounter = value; }
         }
+
+        public static ContentManager myContent;
+        private bool clicked = false;
 
         public GameWorld()
             : base()
@@ -36,7 +41,7 @@ namespace Forhandlingsspil
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            myContent = Content;
             base.Initialize();
         }
 
@@ -48,7 +53,9 @@ namespace Forhandlingsspil
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            font = Content.Load<SpriteFont>(@"SpriteFont");
+            Player.Instance.LoadContent(Content);
+            this.IsMouseVisible = true;
             // TODO: use this.Content to load your game content here
         }
 
@@ -70,8 +77,16 @@ namespace Forhandlingsspil
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            
             // TODO: Add your update logic here
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && !clicked)
+            {
+                clicked = true;
+                roundCounter++;
+            }
+            else if (Mouse.GetState().LeftButton == ButtonState.Released)
+                clicked = false;
+            Player.Instance.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -85,6 +100,12 @@ namespace Forhandlingsspil
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            Player.Instance.Draw(spriteBatch);
+            spriteBatch.DrawString(font, roundCounter.ToString(), new Vector2(250, 0), Color.White);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

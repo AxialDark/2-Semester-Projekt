@@ -23,3 +23,7 @@ C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.csprojResolveAssemblyReference.cache
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.exe
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.pdb
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\black.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\white.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpriteFont.spritefont
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpriteFont.xnb

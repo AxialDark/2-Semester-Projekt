@@ -13,12 +13,19 @@ namespace Forhandlingsspil
         protected Vector2 position;
         protected float scale;
         protected float layer;
+        protected Vector2 origin;
         protected Rectangle rect;
         protected Texture2D texture;
+        protected Color color;
 
         public SpriteObject(Vector2 position, float scale, float layer, Rectangle rect)
         {
-
+            this.position = position;
+            this.scale = scale;
+            this.layer = layer;
+            this.rect = rect;
+            this.origin = Vector2.Zero;
+            this.color = Color.White;
         }
 
         public virtual void LoadContent(ContentManager content)
@@ -31,7 +38,7 @@ namespace Forhandlingsspil
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(texture, position, rect, color, 0f, origin, scale, SpriteEffects.None, layer);
         }
     }
 }
