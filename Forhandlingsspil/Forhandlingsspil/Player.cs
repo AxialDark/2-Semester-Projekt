@@ -12,6 +12,12 @@ namespace Forhandlingsspil
     class Player : SpriteObject
     {
         private Dictionary<string, Statement> honestDic = new Dictionary<string, Statement>();
+
+        public Dictionary<string, Statement> HonestDic
+        {
+            get { return honestDic; }
+            set { honestDic = value; }
+        }
         private Dictionary<string, Statement> humorousDic = new Dictionary<string, Statement>();
         private Dictionary<string, Statement> sneakyDic = new Dictionary<string, Statement>();
         private int salary;
@@ -31,52 +37,58 @@ namespace Forhandlingsspil
             set { keys = value; }
         }
 
+        public int Salary
+        {
+            get { return salary; }
+            set { salary = value; }
+        }
+
         private Player(Vector2 position, float scale, float layer, Rectangle rect)
             : base(position, scale, layer, rect)
         {
-            honestDic.Add(0.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer"));
-            humorousDic.Add(0.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer"));
-            sneakyDic.Add(0.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer"));
+            honestDic.Add(0.ToString() + "HO", new Statement("0HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer", 1, 100));
+            humorousDic.Add(0.ToString() + "HU", new Statement("0HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer", 0, 0));
+            sneakyDic.Add(0.ToString() + "S", new Statement("0S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer", -1, -100));
 
-            honestDic.Add(1.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer2"));
-            humorousDic.Add(1.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer2"));
-            sneakyDic.Add(1.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer2"));
+            honestDic.Add(1.ToString() + "HO", new Statement("1HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer2", 1, 100));
+            humorousDic.Add(1.ToString() + "HU", new Statement("1HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer2", 0, 0));
+            sneakyDic.Add(1.ToString() + "S", new Statement("1S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer2", -1, -100));
 
-            honestDic.Add(2.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer3"));
-            humorousDic.Add(2.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer3"));
-            sneakyDic.Add(2.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer3"));
+            honestDic.Add(2.ToString() + "HO", new Statement("2HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer3", 1, 100));
+            humorousDic.Add(2.ToString() + "HU", new Statement("2HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer3", 0, 0));
+            sneakyDic.Add(2.ToString() + "S", new Statement("2S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer3", -1, -100));
 
-            honestDic.Add(3.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer4"));
-            humorousDic.Add(3.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer4"));
-            sneakyDic.Add(3.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer4"));
+            honestDic.Add(3.ToString() + "HO", new Statement("3HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer4", 1, 100));
+            humorousDic.Add(3.ToString() + "HU", new Statement("3HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer4", 0, 0));
+            sneakyDic.Add(3.ToString() + "S", new Statement("3S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer4", -1, -100));
 
-            honestDic.Add(4.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer5"));
-            humorousDic.Add(4.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer5"));
-            sneakyDic.Add(4.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer5"));
+            honestDic.Add(4.ToString() + "HO", new Statement("4HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer5", 1, 100));
+            humorousDic.Add(4.ToString() + "HU", new Statement("4HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer5", 0, 0));
+            sneakyDic.Add(4.ToString() + "S", new Statement("4S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer5", -1, -100));
 
-            honestDic.Add(5.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer6"));
-            humorousDic.Add(5.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer6"));
-            sneakyDic.Add(5.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer6"));
+            honestDic.Add(5.ToString() + "HO", new Statement("5HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer6", 1, 100));
+            humorousDic.Add(5.ToString() + "HU", new Statement("5HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer6", 0, 0));
+            sneakyDic.Add(5.ToString() + "S", new Statement("5S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer6", -1, -100));
 
-            honestDic.Add(6.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer7"));
-            humorousDic.Add(6.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer7"));
-            sneakyDic.Add(6.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer7"));
+            honestDic.Add(6.ToString() + "HO", new Statement("6HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer7", 1, 100));
+            humorousDic.Add(6.ToString() + "HU", new Statement("6HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer7", 0, 0));
+            sneakyDic.Add(6.ToString() + "S", new Statement("6S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer7", -1, -100));
 
-            honestDic.Add(7.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer8"));
-            humorousDic.Add(7.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer8"));
-            sneakyDic.Add(7.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer8"));
+            honestDic.Add(7.ToString() + "HO", new Statement("7HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer8", 1, 100));
+            humorousDic.Add(7.ToString() + "HU", new Statement("7HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer8", 0, 0));
+            sneakyDic.Add(7.ToString() + "S", new Statement("7S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer8", -1, -100));
 
-            honestDic.Add(8.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer9"));
-            humorousDic.Add(8.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer9"));
-            sneakyDic.Add(8.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer9"));
+            honestDic.Add(8.ToString() + "HO", new Statement("8HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer9", 1, 100));
+            humorousDic.Add(8.ToString() + "HU", new Statement("8HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer9", 0, 0));
+            sneakyDic.Add(8.ToString() + "S", new Statement("8S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer9", -1, -100));
 
-            honestDic.Add(9.ToString(), new Statement(new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer10"));
-            humorousDic.Add(9.ToString(), new Statement(new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer10"));
-            sneakyDic.Add(9.ToString(), new Statement(new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer10"));
+            honestDic.Add(9.ToString() + "HO", new Statement("9HO", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "The honest answer10", 1, 100));
+            humorousDic.Add(9.ToString() + "HU", new Statement("9HU", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "The humorous answer10", 0, 0));
+            sneakyDic.Add(9.ToString() + "S", new Statement("9S", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "The sneaky answer10", -1, -100));
 
-            stateArray[0] = honestDic[0.ToString()];
-            stateArray[1] = humorousDic[0.ToString()];
-            stateArray[2] = sneakyDic[0.ToString()];
+            stateArray[0] = honestDic[0.ToString() + "HO"];
+            stateArray[1] = humorousDic[0.ToString() + "HU"];
+            stateArray[2] = sneakyDic[0.ToString() + "S"];
         }
 
         public static Player Instance
@@ -128,12 +140,37 @@ namespace Forhandlingsspil
             //honestDic[GameWorld.RoundCounter.ToString()].Draw(spriteBatch);
             //humorousDic[GameWorld.RoundCounter.ToString()].Draw(spriteBatch);
             //sneakyDic[GameWorld.RoundCounter.ToString()].Draw(spriteBatch);
-
-            for (int i = 0; i < stateArray.Length; i++)
+            if (!GameWorld.gameOver && !GameWorld.isPreparing)
             {
-                stateArray[i].Draw(spriteBatch);
+                for (int i = 0; i < stateArray.Length; i++)
+                {
+                    stateArray[i].Draw(spriteBatch);
+                }
             }
 
+            spriteBatch.DrawString(GameWorld.font, salary.ToString(), new Vector2(100, 100), Color.Gold);
+
+            if(GameWorld.gameOver)
+            {
+                Vector2 textPos = new Vector2(10, 10);
+
+                foreach(string str in keys)
+                {
+                    if(honestDic.ContainsKey(str))
+                    {
+                        spriteBatch.DrawString(GameWorld.font, honestDic[str].StatementText, textPos, Color.Black);
+                    }
+                    if (humorousDic.ContainsKey(str))
+                    {
+                        spriteBatch.DrawString(GameWorld.font, humorousDic[str].StatementText, textPos, Color.Black);
+                    }
+                    if (sneakyDic.ContainsKey(str))
+                    {
+                        spriteBatch.DrawString(GameWorld.font, sneakyDic[str].StatementText, textPos, Color.Black);
+                    }
+                    textPos += new Vector2(0, 15);
+                }
+            }
             //if (questions[0])
             //{
             //    spriteBatch.DrawString(GameWorld.font, "You clicked button 1", new Vector2(200, 200), Color.White);
@@ -153,6 +190,7 @@ namespace Forhandlingsspil
 
             //base.Draw(spriteBatch);
         }
+        #region Crap
         //private void MouseControl()
         //{
         //    Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
@@ -224,14 +262,14 @@ namespace Forhandlingsspil
         //        buttonClicked = false;
         //    }
         //}
-
+        #endregion
         public void SwitchStatements()
         {
             if (honestDic.Count > GameWorld.RoundCounter)
             {
-                stateArray[0] = honestDic[GameWorld.RoundCounter.ToString()];
-                stateArray[1] = humorousDic[GameWorld.RoundCounter.ToString()];
-                stateArray[2] = sneakyDic[GameWorld.RoundCounter.ToString()];
+                stateArray[0] = honestDic[GameWorld.RoundCounter.ToString() + "HO"];
+                stateArray[1] = humorousDic[GameWorld.RoundCounter.ToString() + "HU"];
+                stateArray[2] = sneakyDic[GameWorld.RoundCounter.ToString() + "S"];
             }
         }
     }

@@ -12,19 +12,31 @@ namespace Forhandlingsspil
     class Statement : SpriteObject
     {
         private int salaryChangeValue;
-        private short moodChangeValue;
+        private int moodChangeValue;
         private string statementText;
+
+
         private StatementType type;
 
-        private bool buttonClicked = false;
+        private bool buttonClicked = true;
         private bool question = false;
         private DateTime remove = DateTime.Now;
+        private DateTime click;
+        private bool bla = false;
+        private string key; 
+        public string StatementText
+        {
+            get { return statementText; }
+        }
 
-        public Statement(Vector2 position, float scale, float layer, Rectangle rect, StatementType type, string text)
+        public Statement(string key, Vector2 position, float scale, float layer, Rectangle rect, StatementType type, string text, int moodValue, int salaryValue)
             : base(position, scale, layer, rect)
         {
+            this.key = key;
             this.statementText = text;
             this.type = type;
+            this.moodChangeValue = moodValue;
+            this.salaryChangeValue = salaryValue;
             LoadContent(GameWorld.myContent);
         }
 
@@ -35,6 +47,11 @@ namespace Forhandlingsspil
         }
         public override void Update(GameTime gameTime)
         {
+            if (!bla)
+            {
+                click = DateTime.Now.AddMilliseconds(2);
+                bla = true;
+            }
             RemoveText();
             MouseControl();
             base.Update(gameTime);
@@ -56,7 +73,7 @@ namespace Forhandlingsspil
 
             if (mousePosition.X >= position.X && mousePosition.X <= position.X + 200)
             {
-                if (mousePosition.Y >= position.Y && mousePosition.Y <= position.Y + 50)
+                if (mousePosition.Y >= position.Y && mousePosition.Y <= position.Y + 50 && click < DateTime.Now)
                 {
                     color = Color.Red;
                     MouseClick();
@@ -75,8 +92,12 @@ namespace Forhandlingsspil
                 if (!question)
                     remove = DateTime.Now.AddSeconds(5);
                 question = true;
+                Player.Instance.Keys[GameWorld.RoundCounter] = key;
+                GameWorld.RoundCounter++;
                 Player.Instance.SwitchStatements();
-                
+                Negotiator.Instance.SwitchText(GameWorld.RoundCounter.ToString());
+                Negotiator.Instance.SwitchMood(moodChangeValue);
+                Player.Instance.Salary += salaryChangeValue;
             }
             else if (Mouse.GetState().LeftButton == ButtonState.Released)
             {

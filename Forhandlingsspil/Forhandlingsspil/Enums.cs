@@ -5,6 +5,6 @@ using System.Text;
 
 namespace Forhandlingsspil
 {
-    enum NegotiatorMood { Dissatisfied, Neutral, Satisfied}
+    enum NegotiatorMood { Dissatisfied = 0, Neutral = 1, Satisfied = 2}
     enum StatementType { Honest, Humorous, Sneaky}
 }

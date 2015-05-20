@@ -13,7 +13,7 @@ namespace Forhandlingsspil
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private static byte roundCounter;
-        private bool isPreparing;
+        public static bool isPreparing;
         public static SpriteFont font;
 
         public static byte RoundCounter
@@ -24,12 +24,14 @@ namespace Forhandlingsspil
 
         public static ContentManager myContent;
         private bool clicked = false;
+        public static bool gameOver;
 
         public GameWorld()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            isPreparing = true;
         }
 
         /// <summary>
@@ -81,12 +83,23 @@ namespace Forhandlingsspil
             // TODO: Add your update logic here
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && !clicked)
             {
-                clicked = true;
-                roundCounter++;
+                //clicked = true;
+                //roundCounter++;
             }
             else if (Mouse.GetState().LeftButton == ButtonState.Released)
                 clicked = false;
-            Player.Instance.Update(gameTime);
+
+            if (!isPreparing && !gameOver)
+            {
+                Player.Instance.Update(gameTime);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.R))
+                isPreparing = false;
+
+            if(roundCounter >= 10)
+            {
+                gameOver = true;
+            }
 
             base.Update(gameTime);
         }
@@ -102,9 +115,13 @@ namespace Forhandlingsspil
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            Player.Instance.Draw(spriteBatch);
-            spriteBatch.DrawString(font, roundCounter.ToString(), new Vector2(250, 0), Color.White);
+            if (!isPreparing && !gameOver)
+            {
+                Negotiator.Instance.Draw(spriteBatch);
 
+                spriteBatch.DrawString(font, roundCounter.ToString(), new Vector2(250, 0), Color.White);
+            }
+            Player.Instance.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
