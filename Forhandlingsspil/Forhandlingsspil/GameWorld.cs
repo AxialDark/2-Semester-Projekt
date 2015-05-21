@@ -25,6 +25,8 @@ namespace Forhandlingsspil
         public static ContentManager myContent;
         private bool clicked = false;
         public static bool gameOver;
+        NegotiatingTrick union;
+        NegotiatingTrick collegua;
 
         public GameWorld()
             : base()
@@ -44,6 +46,8 @@ namespace Forhandlingsspil
         {
             // TODO: Add your initialization logic here
             myContent = Content;
+            union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 20), false, true);
+            collegua = new NegotiatingTrick(new Vector2(0, 75), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
             base.Initialize();
         }
 
@@ -89,6 +93,12 @@ namespace Forhandlingsspil
             else if (Mouse.GetState().LeftButton == ButtonState.Released)
                 clicked = false;
 
+            if (isPreparing)
+            {
+                union.Update(gameTime);
+                collegua.Update(gameTime);
+            }
+
             if (!isPreparing && !gameOver)
             {
                 Player.Instance.Update(gameTime);
@@ -115,6 +125,11 @@ namespace Forhandlingsspil
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            if (isPreparing)
+            {
+                union.Draw(spriteBatch);
+                collegua.Draw(spriteBatch);
+            }
             if (!isPreparing && !gameOver)
             {
                 Negotiator.Instance.Draw(spriteBatch);
@@ -126,7 +141,5 @@ namespace Forhandlingsspil
 
             base.Draw(gameTime);
         }
-
-
     }
 }

@@ -23,8 +23,8 @@ namespace Forhandlingsspil
         private int salary;
         private NegotiatingTrick negotiatingTrick;
         private static Player instance;
-        
-        private Color[] color = new Color[]{Color.White, Color.White, Color.White};
+
+        private Color[] color = new Color[] { Color.White, Color.White, Color.White };
         private bool buttonClicked = false;
         private bool[] questions = new bool[] { false, false, false };
         private string[] keys = new string[10];
@@ -107,7 +107,7 @@ namespace Forhandlingsspil
             //honestDic[0.ToString()].LoadContent(content);
             //humorousDic[0.ToString()].LoadContent(content);
             //sneakyDic[0.ToString()].LoadContent(content);
-            
+
 
             //for (int i = 0; i < stateArray.Length; i++)
             //{
@@ -127,6 +127,9 @@ namespace Forhandlingsspil
             {
                 stateArray[i].Update(gameTime);
             }
+
+            if (!GameWorld.isPreparing && negotiatingTrick != null)
+                negotiatingTrick.Update(gameTime);
 
             //MouseControl();
             base.Update(gameTime);
@@ -148,15 +151,21 @@ namespace Forhandlingsspil
                 }
             }
 
+            if (negotiatingTrick != null)
+            {
+                negotiatingTrick.DrawUseText(spriteBatch);
+                negotiatingTrick.Draw(spriteBatch);
+            }
+
             spriteBatch.DrawString(GameWorld.font, salary.ToString(), new Vector2(100, 100), Color.Gold);
 
-            if(GameWorld.gameOver)
+            if (GameWorld.gameOver)
             {
                 Vector2 textPos = new Vector2(10, 10);
 
-                foreach(string str in keys)
+                foreach (string str in keys)
                 {
-                    if(honestDic.ContainsKey(str))
+                    if (honestDic.ContainsKey(str))
                     {
                         spriteBatch.DrawString(GameWorld.font, honestDic[str].StatementText, textPos, Color.Black);
                     }
@@ -271,6 +280,10 @@ namespace Forhandlingsspil
                 stateArray[1] = humorousDic[GameWorld.RoundCounter.ToString() + "HU"];
                 stateArray[2] = sneakyDic[GameWorld.RoundCounter.ToString() + "S"];
             }
+        }
+        public void CreateNegotiatingTrick(NegotiatingTrick trick)
+        {
+            negotiatingTrick = trick;
         }
     }
 }
