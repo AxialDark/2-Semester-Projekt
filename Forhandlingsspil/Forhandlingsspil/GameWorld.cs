@@ -83,12 +83,10 @@ namespace Forhandlingsspil
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
+
             // TODO: Add your update logic here
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && !clicked)
             {
-                //clicked = true;
-                //roundCounter++;
             }
             else if (Mouse.GetState().LeftButton == ButtonState.Released)
                 clicked = false;
@@ -105,11 +103,6 @@ namespace Forhandlingsspil
             }
             if (Keyboard.GetState().IsKeyDown(Keys.R))
                 isPreparing = false;
-
-            if(roundCounter >= 10)
-            {
-                gameOver = true;
-            }
 
             base.Update(gameTime);
         }
@@ -132,10 +125,11 @@ namespace Forhandlingsspil
             }
             if (!isPreparing && !gameOver)
             {
-                Negotiator.Instance.Draw(spriteBatch);
-
                 spriteBatch.DrawString(font, roundCounter.ToString(), new Vector2(250, 0), Color.White);
             }
+            if (!isPreparing)
+                Negotiator.Instance.Draw(spriteBatch);
+            
             Player.Instance.Draw(spriteBatch);
             spriteBatch.End();
 

@@ -39,21 +39,39 @@ namespace Forhandlingsspil
                 useText = "Brug forening";
         }
 
+        /// <summary>
+        /// Used to load content when the game starts
+        /// </summary>
+        /// <param name="content">From the monogame framework, used to load the content</param>
         public override void LoadContent(ContentManager content)
         {
             texture = content.Load<Texture2D>(@"black");
             //base.LoadContent(content);
         }
+        /// <summary>
+        /// Used to Update the variables in the NegotiatingTrick class
+        /// </summary>
+        /// <param name="gameTime">From the monogame framework, counts the time</param>
         public override void Update(GameTime gameTime)
         {
             MouseControl();
             base.Update(gameTime);
         }
+        /// <summary>
+        /// Used to draw in the NegotiatingTrick class
+        /// </summary>
+        /// <param name="spriteBatch">From the monogame framework used to draw</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-            spriteBatch.DrawString(GameWorld.font, useText, position, Color.White);
+            if (!used)
+            {
+                base.Draw(spriteBatch);
+                spriteBatch.DrawString(GameWorld.font, useText, position, Color.White);
+            }
         }
+        /// <summary>
+        /// Used for the mouse control, Checking of position etc.
+        /// </summary>
         private void MouseControl()
         {
             Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
@@ -66,7 +84,9 @@ namespace Forhandlingsspil
                 }
             }
         }
-
+        /// <summary>
+        /// Contains the code for what happens when the mouse is clicked
+        /// </summary>
         private void MouseClick()
         {
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && !buttonClicked)
@@ -92,13 +112,18 @@ namespace Forhandlingsspil
                 buttonClicked = false;
             }
         }
-
+        /// <summary>
+        /// Used when switching from preparing phase to the negotiating phase
+        /// </summary>
         private void SwitchFromPreparing()
         {
             GameWorld.isPreparing = false;
             position = new Vector2(0, 330);
         }
-
+        /// <summary>
+        /// Sub method for the draw
+        /// </summary>
+        /// <param name="spriteBatch">From the monogame framework used to draw</param>
         public void DrawUseText(SpriteBatch spriteBatch)
         {
             if (used)
