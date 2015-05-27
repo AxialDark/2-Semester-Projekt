@@ -27,6 +27,8 @@ namespace Forhandlingsspil
         public static bool gameOver;
         NegotiatingTrick union;
         NegotiatingTrick collegua;
+        public static int windowWitdh;
+        public static SpriteFont smallFont;
 
         public GameWorld()
             : base()
@@ -49,6 +51,7 @@ namespace Forhandlingsspil
             union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 20), false, true);
             collegua = new NegotiatingTrick(new Vector2(0, 75), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
             base.Initialize();
+            windowWitdh = Window.ClientBounds.Width;
         }
 
         /// <summary>
@@ -60,6 +63,7 @@ namespace Forhandlingsspil
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>(@"SpriteFont");
+            smallFont = Content.Load<SpriteFont>(@"SmallFont");
             Player.Instance.LoadContent(Content);
             this.IsMouseVisible = true;
             // TODO: use this.Content to load your game content here

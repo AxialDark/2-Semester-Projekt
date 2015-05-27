@@ -68,6 +68,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\SmallFont.spritefont" />
     <None Include="Content\SpriteFont.spritefont">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

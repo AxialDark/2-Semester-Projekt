@@ -82,7 +82,7 @@ namespace Forhandlingsspil
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            spriteBatch.DrawString(GameWorld.font, statementText, position, Color.Black);
+            spriteBatch.DrawString(GameWorld.smallFont, statementText, position, Color.Black);
 
             if (question)
             {

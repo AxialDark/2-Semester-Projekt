@@ -53,28 +53,45 @@ namespace Forhandlingsspil
         private Player(Vector2 position, float scale, float layer, Rectangle rect)
             : base(position, scale, layer, rect)
         {
-            honestDic.Add("HO0", new Statement("HO0", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "Ho0", 0, 0));
-            humorousDic.Add("HU0", new Statement("HU0", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "Hu0", 0, 0));
-            sneakyDic.Add("S0", new Statement("S0", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "S0", 0, 0));
+            honestDic.Add("HO0", new Statement("HO0", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, 
+                "Hej jeg taenkte paa at jeg " + Environment.NewLine + "skulle have ??????kr." + Environment.NewLine + "mere om maaneden", 0, 0));
+            humorousDic.Add("HU0", new Statement("HU0", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
+                "Dav jeg forstillede mig at" + Environment.NewLine + "skulle have ??????kr." + Environment.NewLine + "om maaneden", 0, 0));
+            sneakyDic.Add("S0", new Statement("S0", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
+                "Mange tak fordi du ville " + Environment.NewLine + "moedes med mig." + Environment.NewLine + "Det er vel nok en fin stol", 1, 0));
 
-            honestDic.Add("HO1", new Statement("HO1", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "Ho1", 0, 0));
-            humorousDic.Add("HU1", new Statement("HU1", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "Hu1", 0, 0));
-            sneakyDic.Add("S1", new Statement("S1", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "S1", 0, 0));
+            honestDic.Add("HO1", new Statement("HO1", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
+                "Ja, fordi jeg har staaet" + Environment.NewLine + "i spidsen for mange af de" + Environment.NewLine + "bedste projekter vi har haft", 1, 0));
+            humorousDic.Add("HU1", new Statement("HU1", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
+                "Ja da"+ Environment.NewLine + "fordi jeg er stjerne god" + Environment.NewLine + "til det jeg laver", -1, 0));
+            sneakyDic.Add("S1", new Statement("S1", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
+                "Selvfoelge er jeg det" + Environment.NewLine + "jeg er en af de bedste" + Environment.NewLine + "arbejdere i firmaet", 0, 0));
 
-            honestDic.Add("HO2", new Statement("HO2", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "Ho2", 0, 0));
-            sneakyDic.Add("S2", new Statement("S2", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "S2", 0, 0));
+            honestDic.Add("HO2", new Statement("HO2", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
+                "Jeg kan godt gaa med til" + Environment.NewLine + "at tage nogle goder ogsaa", 1, 0));
+            sneakyDic.Add("S2", new Statement("S2", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
+                "Jeg vil helst have flere penge", -1, 0));
 
-            honestDic.Add("HO3", new Statement("HO3", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "Ho3", 0, 0));
-            humorousDic.Add("HU3", new Statement("HU3", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "Hu3", 0, 0));
-            sneakyDic.Add("S3", new Statement("S3", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "S3", 0, 0));
+            honestDic.Add("HO3", new Statement("HO3", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
+                "Ja, men jeg er den mest" + Environment.NewLine + "aktive af dem jeg arbejder" + Environment.NewLine + "i projekt med", 0, 0));
+            humorousDic.Add("HU3", new Statement("HU3", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
+                "Jeg er jo den der staar" + Environment.NewLine + "for den gode stemning" + Environment.NewLine + "her i firmaet", 1, 0));
+            sneakyDic.Add("S3", new Statement("S3", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
+                "Jeg saa hvad du lavede til" + Environment.NewLine + "firmafesten" + Environment.NewLine + "er din kone klar over det?", -1, 0));
 
-            honestDic.Add("HO4", new Statement("HO4", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "Ho4", 0, 0));
-            humorousDic.Add("HU4", new Statement("HU4", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "Hu4", 0, 0));
-            sneakyDic.Add("S4", new Statement("S4", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "S4", 0, 0));
+            honestDic.Add("HO4", new Statement("HO4", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
+                "Samme loen det vel i orden", 1, 0));
+            humorousDic.Add("HU4", new Statement("HU4", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
+                "Kom nu von and, du svoemmer" + Environment.NewLine + "jo rundt i penge, saa du kan godt" + Environment.NewLine + "lade noget falde ned til mig", -1, 0));
+            sneakyDic.Add("S4", new Statement("S4", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
+                "Samme loen, jeg mener da jeg er" + Environment.NewLine + "??????kr. mere vaerd paa grund" + Environment.NewLine + "af alle de smaa tjenester", 0, 0));
 
-            honestDic.Add("HO5", new Statement("HO5", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, "Ho5", 0, 0));
-            humorousDic.Add("HU5", new Statement("HU5", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous, "Hu5", 0, 0));
-            sneakyDic.Add("S5", new Statement("S5", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky, "S5", 0, 0));
+            honestDic.Add("HO5", new Statement("HO5", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
+                "Huslejen er lige steget saa hvis jeg" + Environment.NewLine + "ikke kan faa mere i loen kan det vaere" + Environment.NewLine + "at jeg bliver noed til at saelge mit hus", 0, 0));
+            humorousDic.Add("HU5", new Statement("HU5", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
+                "Der er en grund til at man kalder sin" + Environment.NewLine + "kone for skat hun tager sku alle mine" + Environment.NewLine + "penge saa jeg har brug for nogle flere", 1, 0));
+            sneakyDic.Add("S5", new Statement("S5", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
+                "Ja, for jeg er en rigtig god fedteroev", -1, 0));
 
 
 

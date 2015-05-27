@@ -66,7 +66,7 @@ namespace Forhandlingsspil
             if (!used)
             {
                 base.Draw(spriteBatch);
-                spriteBatch.DrawString(GameWorld.font, useText, position, Color.White);
+                spriteBatch.DrawString(GameWorld.smallFont, useText, position, Color.White);
             }
         }
         /// <summary>
