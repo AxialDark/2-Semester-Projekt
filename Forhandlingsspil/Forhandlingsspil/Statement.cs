@@ -24,6 +24,9 @@ namespace Forhandlingsspil
         private DateTime click;
         private bool bla = false;
         private string key;
+        private Texture2D icon;
+        private float scaly;
+        private Rectangle recty;
         public string StatementText
         {
             get { return statementText; }
@@ -49,6 +52,23 @@ namespace Forhandlingsspil
             this.type = type;
             this.moodChangeValue = moodValue;
             this.salaryChangeValue = salaryValue;
+
+            if (type == StatementType.Honest)
+            {
+                this.scaly = 0.15f;
+                this.recty = new Rectangle(0, 0, 640, 480);
+            }
+            else if (type == StatementType.Humorous)
+            {
+                this.scaly = 0.2f;
+                this.recty = new Rectangle(0, 0, 300, 300);
+            }
+            else if (type == StatementType.Sneaky)
+            {
+                this.scaly = 0.3f;
+                this.recty = new Rectangle(0, 0, 300, 300);
+            }
+
             LoadContent(GameWorld.myContent);
         }
         /// <summary>
@@ -58,6 +78,20 @@ namespace Forhandlingsspil
         public override void LoadContent(ContentManager content)
         {
             texture = content.Load<Texture2D>(@"white");
+
+            if(type == StatementType.Honest)
+            {
+                icon = content.Load<Texture2D>(@"Honest");
+            }
+            else if(type == StatementType.Humorous)
+            {
+                icon = content.Load<Texture2D>(@"Humor");
+            }
+            else if(type == StatementType.Sneaky)
+            {
+                icon = content.Load<Texture2D>(@"Cunning");
+            }
+            
             base.LoadContent(content);
         }
         /// <summary>
@@ -83,6 +117,13 @@ namespace Forhandlingsspil
         {
             base.Draw(spriteBatch);
             spriteBatch.DrawString(GameWorld.smallFont, statementText, position, Color.Black);
+
+            spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * scaly) / 2), position.Y + 50), recty, Color.White, 0f, origin, scaly, SpriteEffects.None, layer);
+
+            //if (type == StatementType.Humorous)
+            //{
+            //    spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * 0.2f) / 2), position.Y + 50), new Rectangle(0, 0, 300, 300), Color.White, 0f, origin, 0.2f, SpriteEffects.None, layer);
+            //}
 
             if (question)
             {

@@ -53,7 +53,7 @@ namespace Forhandlingsspil
         private Player(Vector2 position, float scale, float layer, Rectangle rect)
             : base(position, scale, layer, rect)
         {
-            honestDic.Add("HO0", new Statement("HO0", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest, 
+            honestDic.Add("HO0", new Statement("HO0", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
                 "Hej jeg taenkte paa at jeg " + Environment.NewLine + "skulle have ??????kr." + Environment.NewLine + "mere om maaneden", 0, 0));
             humorousDic.Add("HU0", new Statement("HU0", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
                 "Dav jeg forstillede mig at" + Environment.NewLine + "skulle have ??????kr." + Environment.NewLine + "om maaneden", 0, 0));
@@ -63,7 +63,7 @@ namespace Forhandlingsspil
             honestDic.Add("HO1", new Statement("HO1", new Vector2(50, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
                 "Ja, fordi jeg har staaet" + Environment.NewLine + "i spidsen for mange af de" + Environment.NewLine + "bedste projekter vi har haft", 1, 0));
             humorousDic.Add("HU1", new Statement("HU1", new Vector2(300, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
-                "Ja da"+ Environment.NewLine + "fordi jeg er stjerne god" + Environment.NewLine + "til det jeg laver", -1, 0));
+                "Ja da" + Environment.NewLine + "fordi jeg er stjerne god" + Environment.NewLine + "til det jeg laver", -1, 0));
             sneakyDic.Add("S1", new Statement("S1", new Vector2(550, 350), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
                 "Selvfoelge er jeg det" + Environment.NewLine + "jeg er en af de bedste" + Environment.NewLine + "arbejdere i firmaet", 0, 0));
 
@@ -132,7 +132,8 @@ namespace Forhandlingsspil
         {
             for (int i = 0; i < stateArray.Length; i++)
             {
-                stateArray[i].Update(gameTime);
+                if (stateArray[i] != null)
+                    stateArray[i].Update(gameTime);
             }
 
             if (!GameWorld.isPreparing && negotiatingTrick != null)
@@ -150,7 +151,8 @@ namespace Forhandlingsspil
             {
                 for (int i = 0; i < stateArray.Length; i++)
                 {
-                    stateArray[i].Draw(spriteBatch);
+                    if (stateArray[i] != null)
+                        stateArray[i].Draw(spriteBatch);
                 }
             }
 
@@ -164,24 +166,34 @@ namespace Forhandlingsspil
 
             if (GameWorld.gameOver)
             {
-                Vector2 textPos = new Vector2(10, 10);
+                Vector2 textPos = new Vector2(10, 30);
+
+                string textString = string.Empty;
 
                 foreach (string str in keys)
                 {
                     if (honestDic.ContainsKey(str))
                     {
-                        spriteBatch.DrawString(GameWorld.font, honestDic[str].StatementText, textPos, Color.Black);
+                        //spriteBatch.DrawString(GameWorld.font, honestDic[str].StatementText, textPos, Color.Black);
+                        textString += honestDic[str].StatementText + Environment.NewLine + Environment.NewLine;
                     }
                     if (humorousDic.ContainsKey(str))
                     {
-                        spriteBatch.DrawString(GameWorld.font, humorousDic[str].StatementText, textPos, Color.Black);
+                        //spriteBatch.DrawString(GameWorld.font, humorousDic[str].StatementText, textPos, Color.Black);
+                        textString += humorousDic[str].StatementText + Environment.NewLine + Environment.NewLine;
                     }
                     if (sneakyDic.ContainsKey(str))
                     {
-                        spriteBatch.DrawString(GameWorld.font, sneakyDic[str].StatementText, textPos, Color.Black);
+                        //spriteBatch.DrawString(GameWorld.font, sneakyDic[str].StatementText, textPos, Color.Black);
+                        textString += sneakyDic[str].StatementText + Environment.NewLine + Environment.NewLine;
                     }
-                    textPos += new Vector2(0, 15);
+
+                    
+
+                    //textPos += new Vector2(0, GameWorld.font.MeasureString(textString).Y);
                 }
+
+                spriteBatch.DrawString(GameWorld.font, textString, textPos, Color.Black);
             }
 
             //base.Draw(spriteBatch);
@@ -195,6 +207,8 @@ namespace Forhandlingsspil
             stateArray[0] = honestDic["HO" + responseKey];
             if (humorousDic.ContainsKey("HU" + responseKey))
                 stateArray[1] = humorousDic["HU" + responseKey];
+            else if (!humorousDic.ContainsKey("HU" + responseKey))
+                stateArray[1] = null;
             stateArray[2] = sneakyDic["S" + responseKey];
         }
         /// <summary>
