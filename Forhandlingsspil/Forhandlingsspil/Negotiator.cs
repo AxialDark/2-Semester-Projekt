@@ -18,6 +18,8 @@ namespace Forhandlingsspil
         private Dictionary<string, string> responses = new Dictionary<string, string>();
         private static Negotiator instance;
 
+        private Texture2D[] textures = new Texture2D[11];
+
         private Negotiator(Vector2 position, float scale, float layer, Rectangle rect)
             : base(position, scale, layer, rect)
         {
@@ -51,6 +53,12 @@ namespace Forhandlingsspil
             responses.Add("N6", "Det var fint at se dig i dag, du faar den loen du faar");
             responses.Add("D6", "Det var det, skrid hjem med din lorte loen");
 
+            LoadContent(GameWorld.myContent);
+            
+            texture = textures[9];
+
+            this.scale = 0.75f;
+
             curText = "Velkommen til, jeg har lige faaet en ny stol, den er daelme rar";
         }
 
@@ -63,7 +71,7 @@ namespace Forhandlingsspil
             {
                 if (instance == null)
                 {
-                    instance = new Negotiator(new Vector2(100, 10), 1, 1.0f, new Rectangle(0, 0, 20, 20));
+                    instance = new Negotiator(new Vector2(0, 0), 1, 1.0f, new Rectangle(0, 0, 1280, 960));
                 }
                 return instance;
             }
@@ -125,6 +133,22 @@ namespace Forhandlingsspil
         /// <param name="content">From the monogame framework, used to load the content</param>
         public override void LoadContent(ContentManager content)
         {
+            textures[0] = content.Load<Texture2D>(@"Forhandler\udvalgte\idle_sat");
+            textures[1] = content.Load<Texture2D>(@"Forhandler\udvalgte\idle_neu");
+            textures[2] = content.Load<Texture2D>(@"Forhandler\udvalgte\idle_dis");
+            textures[3] = content.Load<Texture2D>(@"Forhandler\udvalgte\resp_sat");
+            textures[4] = content.Load<Texture2D>(@"Forhandler\udvalgte\resp_neu");
+            textures[5] = content.Load<Texture2D>(@"Forhandler\udvalgte\resp_dis");
+            textures[6] = content.Load<Texture2D>(@"Forhandler\udvalgte\end_sat");
+            textures[7] = content.Load<Texture2D>(@"Forhandler\udvalgte\end_neu");
+            textures[8] = content.Load<Texture2D>(@"Forhandler\udvalgte\slut");
+            textures[9] = content.Load<Texture2D>(@"Forhandler\udvalgte\forb");
+            textures[10] = content.Load<Texture2D>(@"Forhandler\udvalgte\fyrst");
+
+
+
+
+
             base.LoadContent(content);
         }
         /// <summary>
@@ -141,10 +165,13 @@ namespace Forhandlingsspil
         /// <param name="spriteBatch">From the monogame framework used to draw</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 12), Color.Black);
-            if (!GameWorld.gameOver)
-                spriteBatch.DrawString(GameWorld.font, mood.ToString(), new Vector2(0, 20), textColor);
-            //base.Draw(spriteBatch);
+            if (!GameWorld.isPreparing)
+            {
+                spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 12), Color.Black);
+                if (!GameWorld.gameOver)
+                    spriteBatch.DrawString(GameWorld.font, mood.ToString(), new Vector2(0, 20), textColor);
+            }
+            base.Draw(spriteBatch);
         }
         /// <summary>
         /// Switches the Negotiators response
@@ -232,6 +259,22 @@ namespace Forhandlingsspil
                     break;
                 default:
                     break;
+            }
+        }
+
+        public void SwitchTexture()
+        {
+            if (mood == NegotiatorMood.Satisfied)
+            {
+                texture = textures[0];
+            }
+            else if (mood == NegotiatorMood.Neutral)
+            {
+                texture = textures[1];
+            }
+            else if (mood == NegotiatorMood.Dissatisfied)
+            {
+                texture = textures[3];
             }
         }
     }

@@ -61,3 +61,17 @@ C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\o
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Cunning.png
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Humor.png
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Honest.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Cunning.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Honest.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Humor.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\end_neu.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\end_sat.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\forb.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\fyrst.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\idle_dis.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\idle_neu.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\idle_sat.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\resp_dis.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\resp_neu.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\resp_sat.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\udvalgte\slut.jpg

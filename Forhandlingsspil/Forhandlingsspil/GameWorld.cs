@@ -51,6 +51,10 @@ namespace Forhandlingsspil
             union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 20), false, true);
             collegua = new NegotiatingTrick(new Vector2(0, 75), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
             base.Initialize();
+
+            graphics.PreferredBackBufferWidth = (1280 / 4 ) * 3;
+            graphics.PreferredBackBufferHeight = (960 / 4 ) * 3;
+            graphics.ApplyChanges();
             windowWitdh = Window.ClientBounds.Width;
         }
 
@@ -131,9 +135,9 @@ namespace Forhandlingsspil
             {
                 spriteBatch.DrawString(font, roundCounter.ToString(), new Vector2(250, 0), Color.White);
             }
-            if (!isPreparing)
-                Negotiator.Instance.Draw(spriteBatch);
-            
+            //if (!isPreparing)
+            Negotiator.Instance.Draw(spriteBatch);
+
             Player.Instance.Draw(spriteBatch);
             spriteBatch.End();
 
