@@ -31,6 +31,10 @@ namespace Forhandlingsspil
         {
             get { return statementText; }
         }
+        public int SalaryChangeValue
+        {
+            get { return salaryChangeValue;}
+        }
 
         /// <summary>
         /// THe Constructor for the Statement class
@@ -52,6 +56,8 @@ namespace Forhandlingsspil
             this.type = type;
             this.moodChangeValue = moodValue;
             this.salaryChangeValue = salaryValue;
+
+            this.layer = 0.9f;
 
             if (type == StatementType.Honest)
             {
@@ -116,7 +122,7 @@ namespace Forhandlingsspil
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            spriteBatch.DrawString(GameWorld.smallFont, statementText, position, Color.Black);
+            spriteBatch.DrawString(GameWorld.smallFont, statementText, position, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
 
             spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * scaly) / 2), position.Y + 50), recty, Color.White, 0f, origin, scaly, SpriteEffects.None, layer);
 
@@ -164,6 +170,7 @@ namespace Forhandlingsspil
                 GameWorld.RoundCounter++;
                 Negotiator.Instance.SwitchMood(moodChangeValue);
                 Player.Instance.Salary += salaryChangeValue;
+                Negotiator.Instance.SwitchTexture("Resp");
                 Negotiator.Instance.SwitchResponse(key);
             }
             else if (Mouse.GetState().LeftButton == ButtonState.Released)

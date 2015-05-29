@@ -19,6 +19,14 @@ namespace Forhandlingsspil
         private static Negotiator instance;
 
         private Texture2D[] textures = new Texture2D[11];
+        private DateTime idleTimer = DateTime.Now;
+
+        private int currentResponsKey;
+
+        public int CurrentResponsKey
+        {
+            get { return currentResponsKey; }
+        }
 
         private Negotiator(Vector2 position, float scale, float layer, Rectangle rect)
             : base(position, scale, layer, rect)
@@ -28,6 +36,8 @@ namespace Forhandlingsspil
             //responses.Add("2", "ouuaaaaaah der findes ingen ord");
             //responses.Add("3", "ingen ord der helt slaar til");
             //responses.Add("4", "saa kald det lige hvad du vil");
+
+            this.layer = 0.0f;
 
             responses.Add("S1", "Tja det er vel rimeligt, men synes du selv at du er det hver?");
             responses.Add("N1", "Okay, men er du det hver?");
@@ -71,7 +81,7 @@ namespace Forhandlingsspil
             {
                 if (instance == null)
                 {
-                    instance = new Negotiator(new Vector2(0, 0), 1, 1.0f, new Rectangle(0, 0, 1280, 960));
+                    instance = new Negotiator(new Vector2(0, -100), 1, 1.0f, new Rectangle(0, 0, 1280, 960));
                 }
                 return instance;
             }
@@ -157,6 +167,14 @@ namespace Forhandlingsspil
         /// <param name="gameTime">From the monogame framework, counts the time</param>
         public override void Update(GameTime gameTime)
         {
+            if (!GameWorld.isPreparing && !GameWorld.gameOver)
+            {
+                ToIdle();
+            }
+            if (GameWorld.gameOver)
+            {
+                position = new Vector2(0, 0);
+            }
             base.Update(gameTime);
         }
         /// <summary>
@@ -167,9 +185,9 @@ namespace Forhandlingsspil
         {
             if (!GameWorld.isPreparing)
             {
-                spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 12), Color.Black);
+                spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 12), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
                 if (!GameWorld.gameOver)
-                    spriteBatch.DrawString(GameWorld.font, mood.ToString(), new Vector2(0, 20), textColor);
+                    spriteBatch.DrawString(GameWorld.font, mood.ToString(), new Vector2(0, 20), textColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
             }
             base.Draw(spriteBatch);
         }
@@ -179,6 +197,8 @@ namespace Forhandlingsspil
         /// <param name="key">The last half of the key for the Dictionary</param>
         public void SwitchText(string key)
         {
+            currentResponsKey = Convert.ToInt32(key);
+            
             string newText = string.Empty;
 
             if (mood == NegotiatorMood.Satisfied)
@@ -223,10 +243,12 @@ namespace Forhandlingsspil
                     break;
                 case "HO2":
                     GameWorld.gameOver = true;
+                    SwitchTexture("End");
                     SwitchText("6");
                     break;
                 case "S2":
                     GameWorld.gameOver = true;
+                    SwitchTexture("End");
                     SwitchText("6");
                     break;
                 case "HO3":
@@ -237,9 +259,11 @@ namespace Forhandlingsspil
                     break;
                 case "S3":
                     GameWorld.gameOver = true;
+                    SwitchTexture("Fired");
                     break;
                 case "HO4":
                     GameWorld.gameOver = true;
+                    SwitchTexture("End");
                     SwitchText("6");
                     break;
                 case "HU4":
@@ -262,19 +286,61 @@ namespace Forhandlingsspil
             }
         }
 
-        public void SwitchTexture()
+        public void SwitchTexture(string context)
         {
-            if (mood == NegotiatorMood.Satisfied)
+            if (mood == NegotiatorMood.Satisfied && context == "Idle")
             {
                 texture = textures[0];
             }
-            else if (mood == NegotiatorMood.Neutral)
+            else if (mood == NegotiatorMood.Neutral && context == "Idle")
             {
                 texture = textures[1];
             }
-            else if (mood == NegotiatorMood.Dissatisfied)
+            else if (mood == NegotiatorMood.Dissatisfied && context == "Idle")
+            {
+                texture = textures[2];
+            }
+
+            if (mood == NegotiatorMood.Satisfied && context == "Resp")
             {
                 texture = textures[3];
+                idleTimer = DateTime.Now.AddSeconds(2);
+            }
+            else if (mood == NegotiatorMood.Neutral && context == "Resp")
+            {
+                texture = textures[4];
+                idleTimer = DateTime.Now.AddSeconds(2);
+            }
+            else if (mood == NegotiatorMood.Dissatisfied && context == "Resp")
+            {
+                texture = textures[5];
+                idleTimer = DateTime.Now.AddSeconds(2);
+            }
+
+            if (mood == NegotiatorMood.Satisfied && context == "End")
+            {
+                texture = textures[6];
+            }
+            else if (mood == NegotiatorMood.Neutral && context == "End")
+            {
+                texture = textures[7];
+            }
+            else if (mood == NegotiatorMood.Dissatisfied && context == "End")
+            {
+                texture = textures[8];
+            }
+
+            if(context == "Fired")
+            {
+                texture = textures[10];
+            }
+        }
+
+        private void ToIdle()
+        {
+            if (idleTimer < DateTime.Now)
+            {
+                SwitchTexture("Idle");
             }
         }
     }

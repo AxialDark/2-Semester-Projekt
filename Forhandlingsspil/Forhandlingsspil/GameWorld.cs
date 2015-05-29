@@ -48,12 +48,13 @@ namespace Forhandlingsspil
         {
             // TODO: Add your initialization logic here
             myContent = Content;
-            union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 20), false, true);
-            collegua = new NegotiatingTrick(new Vector2(0, 75), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
             base.Initialize();
 
+            union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 20), false, true);
+            collegua = new NegotiatingTrick(new Vector2(0, 75), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
+
             graphics.PreferredBackBufferWidth = (1280 / 4 ) * 3;
-            graphics.PreferredBackBufferHeight = (960 / 4 ) * 3;
+            graphics.PreferredBackBufferHeight = (960 / 4 ) * 3 + 20;
             graphics.ApplyChanges();
             windowWitdh = Window.ClientBounds.Width;
         }
@@ -108,9 +109,14 @@ namespace Forhandlingsspil
             if (!isPreparing && !gameOver)
             {
                 Player.Instance.Update(gameTime);
+                Negotiator.Instance.Update(gameTime);
             }
+
             if (Keyboard.GetState().IsKeyDown(Keys.R))
+            {
                 isPreparing = false;
+                Negotiator.Instance.SwitchTexture("Idle");
+            }
 
             base.Update(gameTime);
         }
@@ -121,10 +127,10 @@ namespace Forhandlingsspil
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
 
             if (isPreparing)
             {
