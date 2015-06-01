@@ -13,12 +13,7 @@ namespace Forhandlingsspil
     {
         private bool isTalkWithColleague;
         private bool isTradeUnion;
-        private int salaryChangeValue;
-        private short moodChangeValue;
         private string useText;
-
-
-
         private bool buttonClicked = true;
         public string UseText
         {
@@ -90,9 +85,9 @@ namespace Forhandlingsspil
         {
             Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
 
-            if (mousePosition.X >= position.X && mousePosition.X <= position.X + 50)
+            if (mousePosition.X >= position.X && mousePosition.X <= position.X + GameWorld.smallFont.MeasureString(useText).X)
             {
-                if (mousePosition.Y >= position.Y && mousePosition.Y <= position.Y + 10)
+                if (mousePosition.Y >= position.Y && mousePosition.Y <= position.Y + 20)
                 {
                     MouseClick();
                 }
@@ -144,7 +139,7 @@ namespace Forhandlingsspil
         {
             GameWorld.isPreparing = false;
             position = new Vector2(0, 330);
-            Negotiator.Instance.SwitchTexture("Idle");
+            Negotiator.Instance.SwitchTexture("Idle", 0);
         }
         /// <summary>
         /// Sub method for the draw

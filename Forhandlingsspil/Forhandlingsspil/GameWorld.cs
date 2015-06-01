@@ -115,7 +115,7 @@ namespace Forhandlingsspil
             if (Keyboard.GetState().IsKeyDown(Keys.R))
             {
                 isPreparing = false;
-                Negotiator.Instance.SwitchTexture("Idle");
+                Negotiator.Instance.SwitchTexture("Idle", 0);
             }
 
             base.Update(gameTime);
