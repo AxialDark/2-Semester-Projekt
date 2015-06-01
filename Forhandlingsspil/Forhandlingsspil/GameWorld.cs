@@ -30,6 +30,8 @@ namespace Forhandlingsspil
         public static int windowWitdh;
         public static SpriteFont smallFont;
 
+        private Texture2D statisticText;
+
         public GameWorld()
             : base()
         {
@@ -71,6 +73,7 @@ namespace Forhandlingsspil
             smallFont = Content.Load<SpriteFont>(@"SmallFont");
             Player.Instance.LoadContent(Content);
             this.IsMouseVisible = true;
+            statisticText = Content.Load<Texture2D>(@"Statistik");
             // TODO: use this.Content to load your game content here
         }
 
@@ -145,6 +148,12 @@ namespace Forhandlingsspil
             Negotiator.Instance.Draw(spriteBatch);
 
             Player.Instance.Draw(spriteBatch);
+
+            if(gameOver)
+            {
+                spriteBatch.Draw(statisticText, new Vector2(windowWitdh - statisticText.Width * 0.5f - 10, 40), new Rectangle(0, 0, 689, 457), Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 1.0f);
+            }
+
             spriteBatch.End();
 
             base.Draw(gameTime);

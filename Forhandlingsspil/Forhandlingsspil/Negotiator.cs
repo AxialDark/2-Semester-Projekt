@@ -337,6 +337,7 @@ namespace Forhandlingsspil
             if(context == "Fired")
             {
                 curText = "UD! Du er fyret!!!";
+                Player.Instance.Salary = 0;
                 texture = textures[10];
             }
         }

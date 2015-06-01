@@ -104,6 +104,9 @@
     <Content Include="Content\SpeechBubble.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Statistik.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\white.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
