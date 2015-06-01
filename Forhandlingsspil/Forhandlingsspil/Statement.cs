@@ -14,15 +14,15 @@ namespace Forhandlingsspil
         private int salaryChangeValue;
         private int moodChangeValue;
         private string statementText;
-
-
         private StatementType type;
 
         private bool buttonClicked = true;
+        #region USED IN DEBUG
         private bool question = false;
         private DateTime remove = DateTime.Now;
+        #endregion
         private DateTime click;
-        private bool bla = false;
+        private bool isClickable = false;
         private string key;
         private Texture2D icon;
         private float scaly;
@@ -33,7 +33,7 @@ namespace Forhandlingsspil
         }
         public int SalaryChangeValue
         {
-            get { return salaryChangeValue;}
+            get { return salaryChangeValue; }
         }
 
         /// <summary>
@@ -85,19 +85,19 @@ namespace Forhandlingsspil
         {
             texture = content.Load<Texture2D>(@"white");
 
-            if(type == StatementType.Honest)
+            if (type == StatementType.Honest)
             {
                 icon = content.Load<Texture2D>(@"Honest");
             }
-            else if(type == StatementType.Humorous)
+            else if (type == StatementType.Humorous)
             {
                 icon = content.Load<Texture2D>(@"Humor");
             }
-            else if(type == StatementType.Sneaky)
+            else if (type == StatementType.Sneaky)
             {
                 icon = content.Load<Texture2D>(@"Cunning");
             }
-            
+
             base.LoadContent(content);
         }
         /// <summary>
@@ -106,10 +106,10 @@ namespace Forhandlingsspil
         /// <param name="gameTime">From the monogame framework, counts the time</param>
         public override void Update(GameTime gameTime)
         {
-            if (!bla)
+            if (!isClickable)
             {
                 click = DateTime.Now.AddMilliseconds(2);
-                bla = true;
+                isClickable = true;
             }
             RemoveText();
             MouseControl();
@@ -131,10 +131,12 @@ namespace Forhandlingsspil
             //    spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * 0.2f) / 2), position.Y + 50), new Rectangle(0, 0, 300, 300), Color.White, 0f, origin, 0.2f, SpriteEffects.None, layer);
             //}
 
+            #if DEBUG
             if (question)
             {
                 spriteBatch.DrawString(GameWorld.font, "You clicked " + type.ToString(), new Vector2(200, 200), Color.Black);
             }
+            #endif
         }
         /// <summary>
         /// Used for the mouse control, Checking of position etc.
@@ -170,7 +172,7 @@ namespace Forhandlingsspil
                 GameWorld.RoundCounter++;
                 Negotiator.Instance.SwitchMood(moodChangeValue);
                 Player.Instance.Salary += salaryChangeValue;
-                Negotiator.Instance.SwitchTexture("Resp");
+                Negotiator.Instance.SwitchTexture("Resp", moodChangeValue);
                 Negotiator.Instance.SwitchResponse(key);
             }
             else if (Mouse.GetState().LeftButton == ButtonState.Released)
@@ -178,11 +180,13 @@ namespace Forhandlingsspil
                 buttonClicked = false;
             }
         }
+
+        #region METHODS USED IN DEBUG
         private void RemoveText()
         {
             if (remove <= DateTime.Now)
                 question = false;
         }
-
+        #endregion
     }
 }

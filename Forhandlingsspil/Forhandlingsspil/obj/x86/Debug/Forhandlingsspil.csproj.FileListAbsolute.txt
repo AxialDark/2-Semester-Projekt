@@ -20,7 +20,6 @@ C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\SharpDX.XInput.xml
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\SharpDX.Direct3D9.xml
-C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.csprojResolveAssemblyReference.cache
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.exe
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.pdb
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\black.png
@@ -56,3 +55,19 @@ C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\b
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.csprojResolveAssemblyReference.cache
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.exe
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.pdb
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SmallFont.xnb
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Cunning.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\end_neu.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\end_sat.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\forb.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\fyrst.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\idle_dis.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\idle_neu.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\idle_sat.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\resp_dis.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\resp_neu.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\resp_sat.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\slut.jpg
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Honest.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Humor.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpeechBubble.png

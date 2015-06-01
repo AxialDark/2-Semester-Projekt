@@ -4,7 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Bruger/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/SpriteFont.spritefont</File>
-    <File>C:/Users/Bruger/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/SmallFont.spritefont</File>
+    <File>C:/Users/Alex/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/SpriteFont.spritefont</File>
+    <File>C:/Users/Alex/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/SmallFont.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

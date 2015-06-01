@@ -20,9 +20,7 @@ namespace Forhandlingsspil
 
         private Texture2D[] textures = new Texture2D[11];
         private DateTime idleTimer = DateTime.Now;
-
         private int currentResponsKey;
-
         public int CurrentResponsKey
         {
             get { return currentResponsKey; }
@@ -99,10 +97,6 @@ namespace Forhandlingsspil
             set { moodValue = value; }
         }
 
-        public void CheckMood()
-        {
-
-        }
         /// <summary>
         /// Switches the Negotiators mood based on the parameter
         /// </summary>
@@ -243,12 +237,12 @@ namespace Forhandlingsspil
                     break;
                 case "HO2":
                     GameWorld.gameOver = true;
-                    SwitchTexture("End");
+                    SwitchTexture("End", 0);
                     SwitchText("6");
                     break;
                 case "S2":
                     GameWorld.gameOver = true;
-                    SwitchTexture("End");
+                    SwitchTexture("End", 0);
                     SwitchText("6");
                     break;
                 case "HO3":
@@ -259,11 +253,11 @@ namespace Forhandlingsspil
                     break;
                 case "S3":
                     GameWorld.gameOver = true;
-                    SwitchTexture("Fired");
+                    SwitchTexture("Fired", 0);
                     break;
                 case "HO4":
                     GameWorld.gameOver = true;
-                    SwitchTexture("End");
+                    SwitchTexture("End", 0);
                     SwitchText("6");
                     break;
                 case "HU4":
@@ -286,8 +280,18 @@ namespace Forhandlingsspil
             }
         }
 
-        public void SwitchTexture(string context)
+        public void SwitchTexture(string context, int moodChanger)
         {
+            NegotiatorMood statementMood = NegotiatorMood.Neutral;
+
+            if (moodChanger == 1)
+                statementMood = NegotiatorMood.Satisfied;
+            else if (moodChanger == 0)
+                statementMood = NegotiatorMood.Neutral;
+            else if (moodChanger == -1)
+                statementMood = NegotiatorMood.Dissatisfied;
+
+
             if (mood == NegotiatorMood.Satisfied && context == "Idle")
             {
                 texture = textures[0];
@@ -301,17 +305,17 @@ namespace Forhandlingsspil
                 texture = textures[2];
             }
 
-            if (mood == NegotiatorMood.Satisfied && context == "Resp")
+            if (statementMood == NegotiatorMood.Satisfied && context == "Resp")
             {
                 texture = textures[3];
                 idleTimer = DateTime.Now.AddSeconds(2);
             }
-            else if (mood == NegotiatorMood.Neutral && context == "Resp")
+            else if (statementMood == NegotiatorMood.Neutral && context == "Resp")
             {
                 texture = textures[4];
                 idleTimer = DateTime.Now.AddSeconds(2);
             }
-            else if (mood == NegotiatorMood.Dissatisfied && context == "Resp")
+            else if (statementMood == NegotiatorMood.Dissatisfied && context == "Resp")
             {
                 texture = textures[5];
                 idleTimer = DateTime.Now.AddSeconds(2);
@@ -332,6 +336,7 @@ namespace Forhandlingsspil
 
             if(context == "Fired")
             {
+                curText = "UD! Du er fyret!!!";
                 texture = textures[10];
             }
         }
@@ -340,7 +345,7 @@ namespace Forhandlingsspil
         {
             if (idleTimer < DateTime.Now)
             {
-                SwitchTexture("Idle");
+                SwitchTexture("Idle", 0);
             }
         }
     }

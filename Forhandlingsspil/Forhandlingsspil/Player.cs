@@ -20,10 +20,8 @@ namespace Forhandlingsspil
         private static Player instance;
 
         private Color[] color = new Color[] { Color.White, Color.White, Color.White };
-        private bool buttonClicked = false;
         private bool[] questions = new bool[] { false, false, false };
         private List<string> keys = new List<string>();
-
 
         private Statement[] stateArray = new Statement[3];
         public List<string> Keys
@@ -34,17 +32,14 @@ namespace Forhandlingsspil
         public Dictionary<string, Statement> HumorousDic
         {
             get { return humorousDic; }
-            set { humorousDic = value; }
         }
         public Dictionary<string, Statement> HonestDic
         {
             get { return honestDic; }
-            set { honestDic = value; }
         }
         public Dictionary<string, Statement> SneakyDic
         {
             get { return sneakyDic; }
-            set { sneakyDic = value; }
         }
         public int Salary
         {
