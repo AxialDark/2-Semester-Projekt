@@ -29,37 +29,31 @@ namespace Forhandlingsspil
         private Negotiator(Vector2 position, float scale, float layer, Rectangle rect)
             : base(position, scale, layer, rect)
         {
-            //responses.Add("0", "kald det kaerlighed");
-            //responses.Add("1", "kald det lige hvad du vil");
-            //responses.Add("2", "ouuaaaaaah der findes ingen ord");
-            //responses.Add("3", "ingen ord der helt slaar til");
-            //responses.Add("4", "saa kald det lige hvad du vil");
-
             this.layer = 0.0f;
 
-            responses.Add("S1", "Tja det er vel rimeligt, men synes du selv at du er det hver?");
-            responses.Add("N1", "Okay, men er du det hver?");
-            responses.Add("D1", "Er det ikke i overkanten, er du overhovedet det hver?");
+            responses.Add("S1", "Tja det er vel rimeligt, men synes du selv at du er det værd?");
+            responses.Add("N1", "Okay, men er du det værd?");
+            responses.Add("D1", "Er det ikke i overkanten, er du overhovedet det værd?");
 
-            responses.Add("S2", "Tja der er ogsaa den mulighed at faa goder i stedet, hvad siger du til det?");
-            responses.Add("N2", "Det vil blive temmelig dyrt for firmaet hvis du skal have det hele som loen" + Environment.NewLine + "hvad med nogle goder i stedet?");
-            responses.Add("D2", "Det har vi ikke raad til, vi kan tilbyde nogle goder i stedet?");
+            responses.Add("S2", "Tja der er også den mulighed at få goder i stedet, hvad siger du til det?");
+            responses.Add("N2", "Det vil blive temmelig dyrt for firmaet hvis du skal have det hele som løn" + Environment.NewLine + "hvad med nogle goder i stedet?");
+            responses.Add("D2", "Det har vi ikke råd til, vi kan tilbyde nogle goder i stedet?");
 
             responses.Add("S3", "Er du nu helt sikker?");
-            responses.Add("N3", "Jeg mener ikke at du er alle de penge hver, men proev at overbevise mig");
-            responses.Add("D3", "Det er bare ikke godt nok, proev igen");
+            responses.Add("N3", "Jeg mener ikke at du er alle de penge hver, men prøv at overbevise mig");
+            responses.Add("D3", "Det er bare ikke godt nok, prøv igen");
 
-            responses.Add("S4", "Ja jeg synes at du har gjort et godt stykke arbejde" + Environment.NewLine + "men jeg synes ikke at du kvalificerer dig til en loenforhoejelse" + Environment.NewLine + "saa jeg taenker samme loen?");
-            responses.Add("N4", "Njaa, jeg taenker samme loen?");
-            responses.Add("D4", "Jeg mener du allerede du faar nok i loen?");
+            responses.Add("S4", "Ja jeg synes at du har gjort et godt stykke arbejde" + Environment.NewLine + "men jeg synes ikke at du kvalificerer dig til en lønforhøjelse" + Environment.NewLine + "så jeg tænker samme løn?");
+            responses.Add("N4", "Njaa, jeg tænker samme løn?");
+            responses.Add("D4", "Jeg mener du allerede du får nok i løn?");
 
-            responses.Add("S5", "Tja det er vel rimeligt, men synes du selv at du er det hver?");
-            responses.Add("N5", "Okay, men er du det hver?");
-            responses.Add("D5", "Er det ikke i overkanten, er du overhovedet det hver?");
+            responses.Add("S5", "Tja det er vel rimeligt, men synes du selv at du er det værd?");
+            responses.Add("N5", "Okay, men er du det værd?");
+            responses.Add("D5", "Er det ikke i overkanten, er du overhovedet det værd?");
 
-            responses.Add("S6", "Det var en meget god samtale og du har helt klart fortjent den loen du faar");
-            responses.Add("N6", "Det var fint at se dig i dag, du faar den loen du faar");
-            responses.Add("D6", "Det var det, skrid hjem med din lorte loen");
+            responses.Add("S6", "Det var en meget god samtale og du har helt klart fortjent den løn du får");
+            responses.Add("N6", "Det var fint at se dig i dag, du får den løn du får");
+            responses.Add("D6", "Det var det, skrid hjem med din lorte løn");
 
             LoadContent(GameWorld.myContent);
             
@@ -67,7 +61,7 @@ namespace Forhandlingsspil
 
             this.scale = 0.75f;
 
-            curText = "Velkommen til, jeg har lige faaet en ny stol, den er daelme rar";
+            curText = "Velkommen til, jeg har lige fået en ny stol, den er dæleme rar";
         }
 
         /// <summary>

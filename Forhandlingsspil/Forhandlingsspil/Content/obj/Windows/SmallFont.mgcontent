@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Bruger/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/SmallFont.spritefont</SourceFile>
-  <SourceTime>2015-05-28T10:40:15.9683476+02:00</SourceTime>
-  <DestFile>C:/Users/Bruger/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/bin/Windows/SmallFont.xnb</DestFile>
-  <DestTime>2015-06-01T13:25:02.4003222+02:00</DestTime>
+  <SourceFile>C:/Users/Alex/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/SmallFont.spritefont</SourceFile>
+  <SourceTime>2015-06-02T10:20:51.9375998+02:00</SourceTime>
+  <DestFile>C:/Users/Alex/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/bin/Windows/SmallFont.xnb</DestFile>
+  <DestTime>2015-06-02T10:21:03.5410285+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2015-03-16T04:01:46+01:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

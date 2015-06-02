@@ -25,7 +25,6 @@ C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\black.png
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\white.png
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpriteFont.spritefont
-C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpriteFont.xnb
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpriteFont.xnb
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\black.png
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\white.png
@@ -55,7 +54,6 @@ C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\b
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.csprojResolveAssemblyReference.cache
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.exe
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.pdb
-C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SmallFont.xnb
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Cunning.png
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\end_neu.jpg
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Forhandler\udvalgte\end_sat.jpg
@@ -88,3 +86,7 @@ C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\b
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Humor.png
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpeechBubble.png
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Statistik.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Statistik.png
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SmallFont.xnb
+C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpriteFont.xnb

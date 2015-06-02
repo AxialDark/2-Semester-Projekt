@@ -119,6 +119,7 @@
     <None Include="Content\SmallFont.spritefont" />
     <None Include="Content\SpriteFont.spritefont">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
