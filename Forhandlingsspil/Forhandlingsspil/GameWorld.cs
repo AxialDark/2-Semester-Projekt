@@ -12,15 +12,8 @@ namespace Forhandlingsspil
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        private static byte roundCounter;
         public static bool isPreparing;
         public static SpriteFont font;
-
-        public static byte RoundCounter
-        {
-            get { return GameWorld.roundCounter; }
-            set { GameWorld.roundCounter = value; }
-        }
 
         public static ContentManager myContent;
         private bool clicked = false;
@@ -142,7 +135,6 @@ namespace Forhandlingsspil
             }
             if (!isPreparing && !gameOver)
             {
-                spriteBatch.DrawString(font, roundCounter.ToString(), new Vector2(250, 0), Color.White);
             }
             //if (!isPreparing)
             Negotiator.Instance.Draw(spriteBatch);

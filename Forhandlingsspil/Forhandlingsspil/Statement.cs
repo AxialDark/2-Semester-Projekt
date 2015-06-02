@@ -169,7 +169,6 @@ namespace Forhandlingsspil
                     remove = DateTime.Now.AddSeconds(5);
                 question = true;
                 Player.Instance.Keys.Add(key);
-                GameWorld.RoundCounter++;
                 Negotiator.Instance.SwitchMood(moodChangeValue);
                 Player.Instance.Salary += salaryChangeValue;
                 Negotiator.Instance.SwitchTexture("Resp", moodChangeValue);

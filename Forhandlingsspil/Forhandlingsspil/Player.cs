@@ -20,7 +20,6 @@ namespace Forhandlingsspil
         private static Player instance;
 
         private Color[] color = new Color[] { Color.White, Color.White, Color.White };
-        private bool[] questions = new bool[] { false, false, false };
         private List<string> keys = new List<string>();
 
         private Statement[] stateArray = new Statement[3];

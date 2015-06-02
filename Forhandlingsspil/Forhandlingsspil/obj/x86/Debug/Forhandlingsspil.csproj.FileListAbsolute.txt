@@ -87,6 +87,5 @@ C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\b
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpeechBubble.png
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Statistik.png
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\Statistik.png
-C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\obj\x86\Debug\Forhandlingsspil.csprojResolveAssemblyReference.cache
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SmallFont.xnb
 C:\Users\Alex\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Debug\Content\SpriteFont.xnb
