@@ -19,7 +19,8 @@ namespace Forhandlingsspil
         private bool clicked = false;
         public static bool gameOver;
         NegotiatingTrick union;
-        NegotiatingTrick collegua;
+        NegotiatingTrick colleague;
+        NegotiatingTrick noTrick;
         public static int windowWitdh;
         public static SpriteFont smallFont;
 
@@ -46,7 +47,8 @@ namespace Forhandlingsspil
             base.Initialize();
 
             union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 20), false, true);
-            collegua = new NegotiatingTrick(new Vector2(0, 75), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
+            colleague = new NegotiatingTrick(new Vector2(0, 75), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
+            noTrick = new NegotiatingTrick(new Vector2(0, 100), 1, 1, new Rectangle(0, 0, 50, 20), false, false);
 
             graphics.PreferredBackBufferWidth = (1280 / 4 ) * 3;
             graphics.PreferredBackBufferHeight = (960 / 4 ) * 3 + 20;
@@ -99,7 +101,8 @@ namespace Forhandlingsspil
             if (isPreparing)
             {
                 union.Update(gameTime);
-                collegua.Update(gameTime);
+                colleague.Update(gameTime);
+                noTrick.Update(gameTime);
             }
 
             if (!isPreparing && !gameOver)
@@ -123,7 +126,7 @@ namespace Forhandlingsspil
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Gray);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
@@ -131,7 +134,8 @@ namespace Forhandlingsspil
             if (isPreparing)
             {
                 union.Draw(spriteBatch);
-                collegua.Draw(spriteBatch);
+                colleague.Draw(spriteBatch);
+                noTrick.Draw(spriteBatch);
             }
             if (!isPreparing && !gameOver)
             {

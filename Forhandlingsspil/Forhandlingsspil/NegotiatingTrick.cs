@@ -25,7 +25,7 @@ namespace Forhandlingsspil
         public NegotiatingTrick(Vector2 position, float scale, float layer, Rectangle rect, bool isColleague, bool isUnion)
             : base(position, scale, layer, rect)
         {
-           
+
             this.isTalkWithColleague = isColleague;
             this.isTradeUnion = isUnion;
             this.layer = 0.9f;
@@ -34,6 +34,8 @@ namespace Forhandlingsspil
                 useText = "Snak med kollega";
             else if (isUnion)
                 useText = "Brug forening";
+            else
+                useText = "Start nu";
             LoadContent(GameWorld.myContent);
             this.rect.Width = (int)GameWorld.smallFont.MeasureString(useText).X + 5;
             this.position.X = iconTexture.Width * 0.2f;
@@ -53,6 +55,10 @@ namespace Forhandlingsspil
             else if (isTalkWithColleague)
             {
                 iconTexture = content.Load<Texture2D>(@"SpeechBubble");
+            }
+            else
+            {
+                iconTexture = content.Load<Texture2D>(@"white");
             }
             //base.LoadContent(content);
         }
@@ -74,6 +80,7 @@ namespace Forhandlingsspil
             if (!used)
             {
                 base.Draw(spriteBatch);
+
                 spriteBatch.Draw(iconTexture, new Vector2(position.X - iconTexture.Width * 0.2f, position.Y), new Rectangle(0, 0, 100, 75), color, 0f, origin, 0.2f, SpriteEffects.None, 1.0f);
                 spriteBatch.DrawString(GameWorld.smallFont, useText, position, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
             }
@@ -105,7 +112,8 @@ namespace Forhandlingsspil
                 if (GameWorld.isPreparing)
                 {
                     SwitchFromPreparing();
-                    Player.Instance.CreateNegotiatingTrick(this);
+                    if (isTalkWithColleague || isTradeUnion)
+                        Player.Instance.CreateNegotiatingTrick(this);
                 }
                 else if (!GameWorld.isPreparing)
                 {
@@ -184,7 +192,7 @@ namespace Forhandlingsspil
                     Negotiator.Instance.SwitchText("2");
                     Player.Instance.Salary += Player.Instance.HumorousDic["HU5"].SalaryChangeValue;
                     break;
-                
+
                 default:
                     break;
             }
