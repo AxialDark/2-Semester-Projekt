@@ -11,17 +11,22 @@ namespace Forhandlingsspil
 {
     class NegotiatingTrick : SpriteObject
     {
+        #region Fields
         private bool isTalkWithColleague;
         private bool isTradeUnion;
         private string useText;
         private bool buttonClicked = true;
+        private bool used;
+        private Texture2D iconTexture;
+        #endregion
+        #region Properties
         public string UseText
         {
             get { return useText; }
         }
-        private bool used;
-        private Texture2D iconTexture;
+        #endregion
 
+        //Constructor
         public NegotiatingTrick(Vector2 position, float scale, float layer, Rectangle rect, bool isColleague, bool isUnion)
             : base(position, scale, layer, rect)
         {
@@ -29,14 +34,17 @@ namespace Forhandlingsspil
             this.isTalkWithColleague = isColleague;
             this.isTradeUnion = isUnion;
             this.layer = 0.9f;
-            //Temp
+
+            //The text for the negotiationtrick is changed based on what type of negotiationtrick the object is.
             if (isColleague)
                 useText = "Snak med kollega";
             else if (isUnion)
                 useText = "Brug forening";
             else
                 useText = "Start nu";
+
             LoadContent(GameWorld.myContent);
+
             this.rect.Width = (int)GameWorld.smallFont.MeasureString(useText).X + 5;
             this.position.X = iconTexture.Width * 0.2f;
         }
@@ -47,7 +55,10 @@ namespace Forhandlingsspil
         /// <param name="content">From the monogame framework, used to load the content</param>
         public override void LoadContent(ContentManager content)
         {
+            //The texture for the button for the negotiatingtrick is loaded.
             texture = content.Load<Texture2D>(@"black");
+            
+            //The texture for the icon for the negotiatingtrick is loaded, based on what type of negotiatingtrick the object is.
             if (isTradeUnion)
             {
                 iconTexture = content.Load<Texture2D>(@"white");
@@ -62,6 +73,7 @@ namespace Forhandlingsspil
             }
             //base.LoadContent(content);
         }
+
         /// <summary>
         /// Used to Update the variables in the NegotiatingTrick class
         /// </summary>
@@ -71,12 +83,14 @@ namespace Forhandlingsspil
             MouseControl();
             base.Update(gameTime);
         }
+
         /// <summary>
         /// Used to draw in the NegotiatingTrick class
         /// </summary>
         /// <param name="spriteBatch">From the monogame framework used to draw</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
+            //The button for the negotiatingtrikc gets drawn to the screen as long as it isn't used.
             if (!used)
             {
                 base.Draw(spriteBatch);
@@ -85,6 +99,7 @@ namespace Forhandlingsspil
                 spriteBatch.DrawString(GameWorld.smallFont, useText, position, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
             }
         }
+
         /// <summary>
         /// Used for the mouse control, Checking of position etc.
         /// </summary>
@@ -92,6 +107,7 @@ namespace Forhandlingsspil
         {
             Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
 
+            //If the mouse is positioned somewhere on the negotiatingtrick button, runs the MouseClick method.
             if (mousePosition.X >= position.X && mousePosition.X <= position.X + GameWorld.smallFont.MeasureString(useText).X)
             {
                 if (mousePosition.Y >= position.Y && mousePosition.Y <= position.Y + 20)
@@ -100,6 +116,7 @@ namespace Forhandlingsspil
                 }
             }
         }
+
         /// <summary>
         /// Contains the code for what happens when the mouse is clicked
         /// </summary>
@@ -109,14 +126,20 @@ namespace Forhandlingsspil
             {
                 buttonClicked = true;
 
+                //If the game is still in the preparing fase, runs the contained code when the negotiatingtrick button is clicked.
                 if (GameWorld.isPreparing)
                 {
+                    //Switches the game from the preparing fase to the negotiation fase.
                     SwitchFromPreparing();
+
+                    //makes the negotiatingtrick in the player class into the chosen negotiatingtrick.
                     if (isTalkWithColleague || isTradeUnion)
                         Player.Instance.CreateNegotiatingTrick(this);
                 }
+                //If the game is in the negotiation fase, runs the contained code when the negotiatingtrick button is clicked.
                 else if (!GameWorld.isPreparing)
                 {
+                    //If the button has not been used, changes variables for the player and the negotiator, based on the type of negotiatingtrick used.
                     if (!used)
                     {
                         if (isTalkWithColleague)
@@ -140,6 +163,7 @@ namespace Forhandlingsspil
                 buttonClicked = false;
             }
         }
+
         /// <summary>
         /// Used when switching from preparing phase to the negotiating phase
         /// </summary>
@@ -149,16 +173,21 @@ namespace Forhandlingsspil
             position = new Vector2(0, 330);
             Negotiator.Instance.SwitchTexture("Idle", 0);
         }
+
         /// <summary>
         /// Sub method for the draw
         /// </summary>
         /// <param name="spriteBatch">From the monogame framework used to draw</param>
         public void DrawUseText(SpriteBatch spriteBatch)
         {
+            //Draws the text that comes when the negotiatingtrick is used.
             if (used)
                 spriteBatch.DrawString(GameWorld.font, useText, new Vector2(500, 0), Color.Black);
         }
 
+        /// <summary>
+        /// This method is used to decide with statement should be chosen when the tradeunion negotiatingtrick is used.
+        /// </summary>
         private void TradeUnionStatementChoice()
         {
             switch (Negotiator.Instance.CurrentResponsKey)

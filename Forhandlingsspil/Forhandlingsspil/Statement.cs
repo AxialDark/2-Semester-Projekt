@@ -25,8 +25,8 @@ namespace Forhandlingsspil
         private bool isClickable = false;
         private string key;
         private Texture2D icon;
-        private float scaly;
-        private Rectangle recty;
+        private float iconScale;
+        private Rectangle iconRect;
         public string StatementText
         {
             get { return statementText; }
@@ -61,18 +61,18 @@ namespace Forhandlingsspil
 
             if (type == StatementType.Honest)
             {
-                this.scaly = 0.15f;
-                this.recty = new Rectangle(0, 0, 640, 480);
+                this.iconScale = 0.15f;
+                this.iconRect = new Rectangle(0, 0, 640, 480);
             }
             else if (type == StatementType.Humorous)
             {
-                this.scaly = 0.2f;
-                this.recty = new Rectangle(0, 0, 300, 300);
+                this.iconScale = 0.2f;
+                this.iconRect = new Rectangle(0, 0, 300, 300);
             }
             else if (type == StatementType.Sneaky)
             {
-                this.scaly = 0.3f;
-                this.recty = new Rectangle(0, 0, 300, 300);
+                this.iconScale = 0.3f;
+                this.iconRect = new Rectangle(0, 0, 300, 300);
             }
 
             LoadContent(GameWorld.myContent);
@@ -124,12 +124,7 @@ namespace Forhandlingsspil
             base.Draw(spriteBatch);
             spriteBatch.DrawString(GameWorld.smallFont, statementText, position, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
 
-            spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * scaly) / 2), position.Y + 50), recty, Color.White, 0f, origin, scaly, SpriteEffects.None, layer);
-
-            //if (type == StatementType.Humorous)
-            //{
-            //    spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * 0.2f) / 2), position.Y + 50), new Rectangle(0, 0, 300, 300), Color.White, 0f, origin, 0.2f, SpriteEffects.None, layer);
-            //}
+            spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * iconScale) / 2), position.Y + 50), iconRect, Color.White, 0f, origin, iconScale, SpriteEffects.None, layer);
 
             #if DEBUG
             if (question)
