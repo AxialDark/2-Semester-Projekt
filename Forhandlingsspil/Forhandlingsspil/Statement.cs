@@ -11,11 +11,11 @@ namespace Forhandlingsspil
 {
     class Statement : SpriteObject
     {
+        #region Fields
         private int salaryChangeValue;
         private int moodChangeValue;
         private string statementText;
         private StatementType type;
-
         private bool buttonClicked = true;
         #region USED IN DEBUG
         private bool question = false;
@@ -27,6 +27,8 @@ namespace Forhandlingsspil
         private Texture2D icon;
         private float scaly;
         private Rectangle recty;
+        #endregion
+        #region Properties
         public string StatementText
         {
             get { return statementText; }
@@ -35,6 +37,7 @@ namespace Forhandlingsspil
         {
             get { return salaryChangeValue; }
         }
+        #endregion
 
         /// <summary>
         /// THe Constructor for the Statement class
@@ -84,7 +87,8 @@ namespace Forhandlingsspil
         public override void LoadContent(ContentManager content)
         {
             texture = content.Load<Texture2D>(@"white");
-
+	    
+	        //Loads the right texture based on the type of Statement
             if (type == StatementType.Honest)
             {
                 icon = content.Load<Texture2D>(@"Honest");
@@ -106,12 +110,15 @@ namespace Forhandlingsspil
         /// <param name="gameTime">From the monogame framework, counts the time</param>
         public override void Update(GameTime gameTime)
         {
+            //Makes so the player can't keep the mousebutton down
             if (!isClickable)
             {
                 click = DateTime.Now.AddMilliseconds(2);
                 isClickable = true;
             }
+            //Used in DEBUG for removing some tekst
             RemoveText();
+
             MouseControl();
             base.Update(gameTime);
         }
@@ -144,11 +151,13 @@ namespace Forhandlingsspil
         private void MouseControl()
         {
             Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
-
+            
+            //if the mouse is positioned somewhere on the Statement button, runs the MouseClick method
             if (mousePosition.X >= position.X && mousePosition.X <= position.X + 200)
             {
                 if (mousePosition.Y >= position.Y && mousePosition.Y <= position.Y + 50 && click < DateTime.Now)
                 {
+                    //Changes the buttons color when mouse hovers over the button
                     color = Color.Red;
                     MouseClick();
                 }
@@ -165,9 +174,11 @@ namespace Forhandlingsspil
             {
                 color = Color.Blue;
                 buttonClicked = true;
+                //Used in DEBUG
                 if (!question)
                     remove = DateTime.Now.AddSeconds(5);
                 question = true;
+
                 Player.Instance.Keys.Add(key);
                 Negotiator.Instance.SwitchMood(moodChangeValue);
                 Player.Instance.Salary += salaryChangeValue;
