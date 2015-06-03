@@ -11,6 +11,7 @@ namespace Forhandlingsspil
 {
     class Player : SpriteObject
     {
+        #region Fields
         private Dictionary<string, Statement> honestDic = new Dictionary<string, Statement>();
         private Dictionary<string, Statement> humorousDic = new Dictionary<string, Statement>();
         private Dictionary<string, Statement> sneakyDic = new Dictionary<string, Statement>();
@@ -18,11 +19,11 @@ namespace Forhandlingsspil
         private int salary;
         private NegotiatingTrick negotiatingTrick;
         private static Player instance;
-
         private Color[] color = new Color[] { Color.White, Color.White, Color.White };
         private List<string> keys = new List<string>();
-
         private Statement[] stateArray = new Statement[3];
+        #endregion
+        #region Properties
         public List<string> Keys
         {
             get { return keys; }
@@ -45,6 +46,7 @@ namespace Forhandlingsspil
             get { return salary; }
             set { salary = value; }
         }
+        #endregion
 
         /// <summary>
         /// The Constructor for the Player class
@@ -56,11 +58,13 @@ namespace Forhandlingsspil
         private Player(Vector2 position, float scale, float layer, Rectangle rect)
             : base(position, scale, layer, rect)
         {
+            //Sets the start salary
             this.salary = 35000;
-
             this.layer = 1.0f;
+            //used for Statement placing
             int height = 620;
 
+            #region Adding Statements to Dictionaries
             honestDic.Add("HO0", new Statement("HO0", new Vector2(10, height), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
                 "Hej jeg tænkte på at jeg " + Environment.NewLine + "skulle have 39.000kr." + Environment.NewLine + "mere om måneden", 0, 4000));
             humorousDic.Add("HU0", new Statement("HU0", new Vector2(380, height), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
@@ -100,10 +104,9 @@ namespace Forhandlingsspil
                 "Der er en grund til at man kalder sin" + Environment.NewLine + "kone for skat hun tager sku alle mine" + Environment.NewLine + "penge så jeg har brug for nogle flere", 1, 200));
             sneakyDic.Add("S5", new Statement("S5", new Vector2(750, height), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
                 "Ja, for jeg er en rigtig god fedterøv", -1, -400));
+            #endregion
 
-
-
-
+            //Sets the initial choices to the first reponse
             stateArray[0] = honestDic["HO0"];
             stateArray[1] = humorousDic["HU0"];
             stateArray[2] = sneakyDic["S0"];
@@ -155,6 +158,7 @@ namespace Forhandlingsspil
         /// <param name="spriteBatch">From the monogame framework used to draw</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
+            //Draws the Statement choices when the preperationfase is over and the game is running
             if (!GameWorld.gameOver && !GameWorld.isPreparing)
             {
                 for (int i = 0; i < stateArray.Length; i++)
@@ -163,7 +167,7 @@ namespace Forhandlingsspil
                         stateArray[i].Draw(spriteBatch);
                 }
             }
-
+            //Only draw if the player has a negotiatingtrick
             if (negotiatingTrick != null)
             {
                 negotiatingTrick.DrawUseText(spriteBatch);
@@ -172,6 +176,7 @@ namespace Forhandlingsspil
 #if DEBUG
             spriteBatch.DrawString(GameWorld.font, "Salary: " + salary.ToString() + "kr.", new Vector2(700, 0), Color.Gold, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
 #endif
+            //Writes out the choices the player has made, when the negotiation is over
             if (GameWorld.gameOver)
             {
                 Vector2 textPos = new Vector2(10, 30);
@@ -182,25 +187,17 @@ namespace Forhandlingsspil
                 {
                     if (honestDic.ContainsKey(str))
                     {
-                        //spriteBatch.DrawString(GameWorld.font, honestDic[str].StatementText, textPos, Color.Black);
                         textString += honestDic[str].StatementText + Environment.NewLine + Environment.NewLine;
                     }
                     if (humorousDic.ContainsKey(str))
                     {
-                        //spriteBatch.DrawString(GameWorld.font, humorousDic[str].StatementText, textPos, Color.Black);
                         textString += humorousDic[str].StatementText + Environment.NewLine + Environment.NewLine;
                     }
                     if (sneakyDic.ContainsKey(str))
                     {
-                        //spriteBatch.DrawString(GameWorld.font, sneakyDic[str].StatementText, textPos, Color.Black);
                         textString += sneakyDic[str].StatementText + Environment.NewLine + Environment.NewLine;
                     }
-
-
-
-                    //textPos += new Vector2(0, GameWorld.font.MeasureString(textString).Y);
                 }
-
                 spriteBatch.DrawString(GameWorld.font, textString, textPos, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, layer);
             }
 
@@ -212,6 +209,7 @@ namespace Forhandlingsspil
         /// <param name="responseKey">The key last of the key for the answer Dictinaries</param>
         public void SwitchStatements(string responseKey)
         {
+            //Sets the draw statements according to the responsekey
             stateArray[0] = honestDic["HO" + responseKey];
             if (humorousDic.ContainsKey("HU" + responseKey))
                 stateArray[1] = humorousDic["HU" + responseKey];

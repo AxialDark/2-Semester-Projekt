@@ -25,10 +25,15 @@ namespace Forhandlingsspil
         private bool isClickable = false;
         private string key;
         private Texture2D icon;
+<<<<<<< HEAD
+        private float iconScale;
+        private Rectangle iconRect;
+=======
         private float scaly;
         private Rectangle recty;
         #endregion
         #region Properties
+>>>>>>> 1d0bc679250970ada04219f8c4856d344cdcf217
         public string StatementText
         {
             get { return statementText; }
