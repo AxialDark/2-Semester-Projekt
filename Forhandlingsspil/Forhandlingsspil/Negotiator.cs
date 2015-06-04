@@ -69,7 +69,7 @@ namespace Forhandlingsspil
             responses.Add("D2", "Det har vi ikke råd til, vi kan tilbyde nogle goder i stedet?");
 
             responses.Add("S3", "Er du nu helt sikker?");
-            responses.Add("N3", "Jeg mener ikke at du er alle de penge hver, men prøv at overbevise mig");
+            responses.Add("N3", "Jeg mener ikke at du er alle de penge værd, men prøv at overbevise mig");
             responses.Add("D3", "Det er bare ikke godt nok, prøv igen");
 
             responses.Add("S4", "Ja jeg synes at du har gjort et godt stykke arbejde" + Environment.NewLine + "men jeg synes ikke at du kvalificerer dig til en lønforhøjelse" + Environment.NewLine + "så jeg tænker samme løn?");
@@ -178,7 +178,7 @@ namespace Forhandlingsspil
             {
                 spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 40), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
                 if (!GameWorld.gameOver)
-                    spriteBatch.DrawString(GameWorld.font, mood.ToString(), new Vector2(0, 20), textColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                    spriteBatch.DrawString(GameWorld.font, "Humør: " + mood.ToString(), new Vector2(10, 20), textColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
             }
             base.Draw(spriteBatch);
         }

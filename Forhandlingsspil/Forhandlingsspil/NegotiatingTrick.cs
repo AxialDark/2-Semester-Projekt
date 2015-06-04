@@ -51,7 +51,7 @@ namespace Forhandlingsspil
             }
             else if (isUnion)
             {
-                useText = "Brug forening";
+                useText = "Tilmeld PROSA";
                 iconRect = new Rectangle(0, 0, 100, 25);
                 iconScale = 0.8f;
             }
@@ -128,7 +128,7 @@ namespace Forhandlingsspil
             Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
 
             //If the mouse is positioned somewhere on the negotiatingtrick button, runs the MouseClick method.
-            if (mousePosition.X >= position.X && mousePosition.X <= position.X + GameWorld.smallFont.MeasureString(useText).X)
+            if (mousePosition.X >= position.X && mousePosition.X <= position.X + GameWorld.mediumFont.MeasureString(useText).X)
             {
                 if (mousePosition.Y >= position.Y && mousePosition.Y <= position.Y + 20)
                 {
@@ -190,8 +190,13 @@ namespace Forhandlingsspil
         private void SwitchFromPreparing()
         {
             GameWorld.isPreparing = false;
-            position = new Vector2(position.X, 330);
+            position = new Vector2(position.X, 550);
             Negotiator.Instance.SwitchTexture("Idle", 0);
+
+            if (isTradeUnion)
+            {
+                useText = "Spørg PROSA";
+            }
         }
 
         /// <summary>

@@ -129,7 +129,7 @@ namespace Forhandlingsspil
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            spriteBatch.DrawString(GameWorld.smallFont, statementText, position, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+            spriteBatch.DrawString(GameWorld.smallFont, statementText, position + new Vector2(5, 0), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
 
             spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * iconScale) / 2), position.Y + 50), iconRect, Color.White, 0f, origin, iconScale, SpriteEffects.None, layer);
 

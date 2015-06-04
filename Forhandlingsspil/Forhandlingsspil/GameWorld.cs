@@ -54,9 +54,9 @@ namespace Forhandlingsspil
             myContent = Content;
             base.Initialize();
 
-            union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 20), false, true);
-            colleague = new NegotiatingTrick(new Vector2(0, 100), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
-            noTrick = new NegotiatingTrick(new Vector2(0, 150), 1, 1, new Rectangle(0, 0, 50, 20), false, false);
+            union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 25), false, true);
+            colleague = new NegotiatingTrick(new Vector2(0, 100), 1, 1, new Rectangle(0, 0, 50, 25), true, false);
+            noTrick = new NegotiatingTrick(new Vector2(0, 150), 1, 1, new Rectangle(0, 0, 50, 25), false, false);
 
             graphics.PreferredBackBufferWidth = (1280 / 4 ) * 3;
             graphics.PreferredBackBufferHeight = (960 / 4 ) * 3 + 20;
