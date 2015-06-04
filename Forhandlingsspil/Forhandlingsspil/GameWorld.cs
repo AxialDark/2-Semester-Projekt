@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Diagnostics;
 
 namespace Forhandlingsspil
 {
@@ -24,7 +26,11 @@ namespace Forhandlingsspil
         public static int windowWitdh;
         public static SpriteFont smallFont;
 
+        public static SpriteFont mediumFont;
         private Texture2D statisticText;
+        public static Stopwatch endTimer;
+        private Texture2D fbIcon;
+        private Texture2D tIcon;
 
         public GameWorld()
             : base()
@@ -32,6 +38,8 @@ namespace Forhandlingsspil
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             isPreparing = true;
+
+            endTimer = new Stopwatch();
         }
 
         /// <summary>
@@ -47,8 +55,8 @@ namespace Forhandlingsspil
             base.Initialize();
 
             union = new NegotiatingTrick(new Vector2(0, 50), 1, 1, new Rectangle(0, 0, 50, 20), false, true);
-            colleague = new NegotiatingTrick(new Vector2(0, 75), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
-            noTrick = new NegotiatingTrick(new Vector2(0, 100), 1, 1, new Rectangle(0, 0, 50, 20), false, false);
+            colleague = new NegotiatingTrick(new Vector2(0, 100), 1, 1, new Rectangle(0, 0, 50, 20), true, false);
+            noTrick = new NegotiatingTrick(new Vector2(0, 150), 1, 1, new Rectangle(0, 0, 50, 20), false, false);
 
             graphics.PreferredBackBufferWidth = (1280 / 4 ) * 3;
             graphics.PreferredBackBufferHeight = (960 / 4 ) * 3 + 20;
@@ -66,9 +74,13 @@ namespace Forhandlingsspil
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>(@"SpriteFont");
             smallFont = Content.Load<SpriteFont>(@"SmallFont");
+            mediumFont = Content.Load<SpriteFont>(@"MediumFont");
             Player.Instance.LoadContent(Content);
+            Negotiator.Instance.LoadContent(Content);
             this.IsMouseVisible = true;
             statisticText = Content.Load<Texture2D>(@"Statistik");
+            fbIcon = Content.Load<Texture2D>(@"Facebook");
+            tIcon = Content.Load<Texture2D>(@"Twitter");
             // TODO: use this.Content to load your game content here
         }
 
@@ -137,19 +149,45 @@ namespace Forhandlingsspil
                 colleague.Draw(spriteBatch);
                 noTrick.Draw(spriteBatch);
             }
-            if (!isPreparing && !gameOver)
+
+            if(endTimer.ElapsedMilliseconds < 2000)
             {
+                Negotiator.Instance.Draw(spriteBatch);
             }
-            //if (!isPreparing)
-            Negotiator.Instance.Draw(spriteBatch);
 
             Player.Instance.Draw(spriteBatch);
 
+            #region Game over
+
             if(gameOver)
             {
-                spriteBatch.Draw(statisticText, new Vector2(windowWitdh - statisticText.Width * 0.5f - 10, 40), new Rectangle(0, 0, 689, 457), Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 1.0f);
+                string endTextSalary = "Du forhandlede dig frem til " + Player.Instance.Salary + "kr, hvilket er en forskel på " + (Player.Instance.Salary - 35000) + "kr i forhold til din forrige løn.";
+
+                if (Player.Instance.NegotiatingTrick != null)
+                {
+                    if(!Player.Instance.NegotiatingTrick.IsTradeUnion && !Player.Instance.NegotiatingTrick.Used)
+                    {
+                        endTextSalary += Environment.NewLine + Environment.NewLine + "Men hvis du havde været medlem af en fagforening, ville du normalvis kunne få omkring 42000kr.";
+                    }
+                    else if(Player.Instance.NegotiatingTrick.IsTradeUnion && !Player.Instance.NegotiatingTrick.Used)
+                    {
+                        endTextSalary += Environment.NewLine + Environment.NewLine + "Men hvis du havde brugt din fagforening, kunne du have fået flere penge.";
+                    }
+                    else
+                    {
+                        endTextSalary += Environment.NewLine + Environment.NewLine + "Godt du havde tilmeldt dig en fagforening samt benyttet dig af den!";
+                    }
+                }
+                if (endTimer.ElapsedMilliseconds >= 2000)
+                {
+                    spriteBatch.DrawString(font, endTextSalary, new Vector2(windowWitdh / 2 - font.MeasureString(endTextSalary).X / 2, statisticText.Height + 100), Color.Gold, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                    spriteBatch.Draw(statisticText, new Vector2(windowWitdh / 2 - (statisticText.Width) / 2, 80), new Rectangle(0, 0, 689, 457), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                    spriteBatch.Draw(fbIcon, new Vector2(20, Window.ClientBounds.Height - (fbIcon.Height * 0.25f) - 20), new Rectangle(0, 0, 300, 258), Color.White, 0, Vector2.Zero, 0.25f, SpriteEffects.None, 1.0f);
+                    spriteBatch.Draw(tIcon, new Vector2(20 + (fbIcon.Width * 0.25f) + 20 , Window.ClientBounds.Height - (tIcon.Height * 0.25f) - 20), new Rectangle(0, 0, 300, 258), Color.White, 0, Vector2.Zero, 0.25f, SpriteEffects.None, 1.0f);
+                }
             }
 
+            #endregion
             spriteBatch.End();
 
             base.Draw(gameTime);

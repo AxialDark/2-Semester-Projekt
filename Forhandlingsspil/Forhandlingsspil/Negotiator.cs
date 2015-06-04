@@ -85,11 +85,6 @@ namespace Forhandlingsspil
             responses.Add("D6", "Det var det, skrid hjem med din lorte løn");
             #endregion
 
-            LoadContent(GameWorld.myContent);
-            
-            //Sets the texture to the preparing fase
-            texture = textures[9];
-
             this.scale = 0.75f;
 
             //Sets the start response
@@ -149,7 +144,9 @@ namespace Forhandlingsspil
             textures[8] = content.Load<Texture2D>(@"Forhandler\udvalgte\slut");
             textures[9] = content.Load<Texture2D>(@"Forhandler\udvalgte\forb");
             textures[10] = content.Load<Texture2D>(@"Forhandler\udvalgte\fyrst");
-
+            
+            //Sets the texture to the preparing fase
+            texture = textures[9];
             base.LoadContent(content);
         }
         /// <summary>
@@ -179,7 +176,7 @@ namespace Forhandlingsspil
             //Draws the responese only after the preparingfase
             if (!GameWorld.isPreparing)
             {
-                spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 12), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 40), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
                 if (!GameWorld.gameOver)
                     spriteBatch.DrawString(GameWorld.font, mood.ToString(), new Vector2(0, 20), textColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
             }
@@ -238,11 +235,13 @@ namespace Forhandlingsspil
                     break;
                 case "HO2":
                     GameWorld.gameOver = true;
+                    GameWorld.endTimer.Start();
                     SwitchTexture("End", 0);
                     SwitchText("6");
                     break;
                 case "S2":
                     GameWorld.gameOver = true;
+                    GameWorld.endTimer.Start();
                     SwitchTexture("End", 0);
                     SwitchText("6");
                     break;
@@ -254,10 +253,12 @@ namespace Forhandlingsspil
                     break;
                 case "S3":
                     GameWorld.gameOver = true;
+                    GameWorld.endTimer.Start();
                     SwitchTexture("Fired", 0);
                     break;
                 case "HO4":
                     GameWorld.gameOver = true;
+                    GameWorld.endTimer.Start();
                     SwitchTexture("End", 0);
                     SwitchText("6");
                     break;

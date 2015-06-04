@@ -46,6 +46,10 @@ namespace Forhandlingsspil
             get { return salary; }
             set { salary = value; }
         }
+        public NegotiatingTrick NegotiatingTrick
+        {
+            get { return negotiatingTrick; }
+        }
         #endregion
 
         /// <summary>
@@ -170,36 +174,35 @@ namespace Forhandlingsspil
             //Only draw if the player has a negotiatingtrick
             if (negotiatingTrick != null)
             {
-                negotiatingTrick.DrawUseText(spriteBatch);
                 negotiatingTrick.Draw(spriteBatch);
             }
 #if DEBUG
             spriteBatch.DrawString(GameWorld.font, "Salary: " + salary.ToString() + "kr.", new Vector2(700, 0), Color.Gold, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
 #endif
             //Writes out the choices the player has made, when the negotiation is over
-            if (GameWorld.gameOver)
-            {
-                Vector2 textPos = new Vector2(10, 30);
+            //if (GameWorld.gameOver)
+            //{
+            //    Vector2 textPos = new Vector2(10, 30);
 
-                string textString = string.Empty;
+            //    string textString = string.Empty;
 
-                foreach (string str in keys)
-                {
-                    if (honestDic.ContainsKey(str))
-                    {
-                        textString += honestDic[str].StatementText + Environment.NewLine + Environment.NewLine;
-                    }
-                    if (humorousDic.ContainsKey(str))
-                    {
-                        textString += humorousDic[str].StatementText + Environment.NewLine + Environment.NewLine;
-                    }
-                    if (sneakyDic.ContainsKey(str))
-                    {
-                        textString += sneakyDic[str].StatementText + Environment.NewLine + Environment.NewLine;
-                    }
-                }
-                spriteBatch.DrawString(GameWorld.font, textString, textPos, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, layer);
-            }
+            //    foreach (string str in keys)
+            //    {
+            //        if (honestDic.ContainsKey(str))
+            //        {
+            //            textString += honestDic[str].StatementText + Environment.NewLine + Environment.NewLine;
+            //        }
+            //        if (humorousDic.ContainsKey(str))
+            //        {
+            //            textString += humorousDic[str].StatementText + Environment.NewLine + Environment.NewLine;
+            //        }
+            //        if (sneakyDic.ContainsKey(str))
+            //        {
+            //            textString += sneakyDic[str].StatementText + Environment.NewLine + Environment.NewLine;
+            //        }
+            //    }
+            //    spriteBatch.DrawString(GameWorld.font, textString, textPos, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, layer);
+            //}
 
             //base.Draw(spriteBatch);
         }
