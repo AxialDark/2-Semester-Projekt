@@ -20,7 +20,6 @@ namespace Forhandlingsspil
         private Texture2D[] textures = new Texture2D[11];
         private DateTime idleTimer = DateTime.Now;
         private int currentResponsKey;
-
         private Texture2D speechBubble;
         #endregion
         #region Properties

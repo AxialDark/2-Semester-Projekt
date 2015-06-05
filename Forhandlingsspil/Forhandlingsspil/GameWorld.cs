@@ -12,11 +12,11 @@ namespace Forhandlingsspil
     /// </summary>
     public class GameWorld : Game
     {
+        #region fields
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public static bool isPreparing;
         public static SpriteFont font;
-
         public static ContentManager myContent;
         private bool clicked = false;
         public static bool gameOver;
@@ -25,7 +25,6 @@ namespace Forhandlingsspil
         NegotiatingTrick noTrick;
         public static int windowWitdh;
         public static SpriteFont smallFont;
-
         public static SpriteFont mediumFont;
         private Texture2D statisticText;
         public static Stopwatch endTimer;
@@ -35,6 +34,7 @@ namespace Forhandlingsspil
         private Texture2D introText;
         private string introString;
         public static SpriteFont introFont;
+        #endregion
 
         public GameWorld()
             : base()

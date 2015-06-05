@@ -80,6 +80,7 @@ namespace Forhandlingsspil
 
             LoadContent(GameWorld.myContent);
         }
+
         /// <summary>
         /// Used to load content when the game starts
         /// </summary>

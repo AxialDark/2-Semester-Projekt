@@ -18,7 +18,6 @@ namespace Forhandlingsspil
         private bool buttonClicked = true;
         private bool used;
         private Texture2D iconTexture;
-
         private Rectangle iconRect;
         private float iconScale;
         #endregion

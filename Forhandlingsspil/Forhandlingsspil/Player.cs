@@ -50,6 +50,20 @@ namespace Forhandlingsspil
         {
             get { return negotiatingTrick; }
         }
+        /// <summary>
+        /// Used in the singleton design pattern
+        /// </summary>
+        public static Player Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Player(new Vector2(50, 350), 1, 1.0f, new Rectangle(0, 0, 200, 50));
+                }
+                return instance;
+            }
+        }
         #endregion
 
         /// <summary>
@@ -116,20 +130,6 @@ namespace Forhandlingsspil
             stateArray[2] = sneakyDic["S0"];
         }
 
-        /// <summary>
-        /// Used in the singleton design pattern
-        /// </summary>
-        public static Player Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Player(new Vector2(50, 350), 1, 1.0f, new Rectangle(0, 0, 200, 50));
-                }
-                return instance;
-            }
-        }
         /// <summary>
         /// Used to load content when the game starts
         /// </summary>
