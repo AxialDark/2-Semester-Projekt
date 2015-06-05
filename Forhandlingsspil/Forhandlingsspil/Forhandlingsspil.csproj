@@ -107,6 +107,12 @@
     <Content Include="Content\Humor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Forhandler\Negotiator.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Intro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\prosa.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -128,6 +134,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\IntroFont.spritefont" />
     <None Include="Content\MediumFont.spritefont" />
     <None Include="Content\SmallFont.spritefont" />
     <None Include="Content\SpriteFont.spritefont">

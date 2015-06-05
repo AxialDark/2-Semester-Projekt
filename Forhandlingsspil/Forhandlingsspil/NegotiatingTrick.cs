@@ -45,27 +45,27 @@ namespace Forhandlingsspil
             //The text for the negotiationtrick and the rectangle size and scale for the icon, is changed based on what type of negotiationtrick the object is.
             if (isColleague)
             {
-                useText = "Snak med kollega";
+                useText = "Snakket med kollega";
                 iconRect = new Rectangle(0, 0, 100, 75);
-                iconScale = 0.5f;
+                iconScale = 0.6f;
             }
             else if (isUnion)
             {
-                useText = "Tilmeld PROSA";
+                useText = "Tilmeldt PROSA";
                 iconRect = new Rectangle(0, 0, 100, 25);
                 iconScale = 0.8f;
             }
             else
             {
-                useText = "Start nu";
+                useText = "Ingen forberedelse";
                 iconRect = new Rectangle(0, 0, 300, 300);
-                iconScale = 0.1f;
+                iconScale = 0.15f;
             }
 
             LoadContent(GameWorld.myContent);
 
             this.rect.Width = (int)GameWorld.mediumFont.MeasureString(useText).X + 5;
-            this.position.X = iconTexture.Width * iconScale;
+            this.position.X = iconTexture.Width * iconScale + GameWorld.windowWitdh / 2 - 20;
 
         }
 
@@ -190,7 +190,7 @@ namespace Forhandlingsspil
         private void SwitchFromPreparing()
         {
             GameWorld.isPreparing = false;
-            position = new Vector2(position.X, 550);
+            position = new Vector2(iconTexture.Width * iconScale, 550);
             Negotiator.Instance.SwitchTexture("Idle", 0);
 
             if (isTradeUnion)

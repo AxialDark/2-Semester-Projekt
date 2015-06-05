@@ -94,3 +94,6 @@ C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\b
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\MediumFont.xnb
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Facebook.png
 C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Twitter.png
+C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Forhandler\Negotiator.png
+C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\Intro.png
+C:\Users\Bruger\Documents\2-Semester-Projekt\Forhandlingsspil\Forhandlingsspil\bin\Windows\Release\Content\IntroFont.xnb

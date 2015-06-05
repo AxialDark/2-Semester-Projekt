@@ -20,6 +20,8 @@ namespace Forhandlingsspil
         private Texture2D[] textures = new Texture2D[11];
         private DateTime idleTimer = DateTime.Now;
         private int currentResponsKey;
+
+        private Texture2D speechBubble;
         #endregion
         #region Properties
         public int CurrentResponsKey
@@ -72,7 +74,7 @@ namespace Forhandlingsspil
             responses.Add("N3", "Jeg mener ikke at du er alle de penge værd, men prøv at overbevise mig");
             responses.Add("D3", "Det er bare ikke godt nok, prøv igen");
 
-            responses.Add("S4", "Ja jeg synes at du har gjort et godt stykke arbejde" + Environment.NewLine + "men jeg synes ikke at du kvalificerer dig til en lønforhøjelse" + Environment.NewLine + "så jeg tænker samme løn?");
+            responses.Add("S4", "Ja jeg synes at du har gjort et godt stykke arbejde men jeg synes ikke at du kvalificerer" + Environment.NewLine + "dig til en lønforhøjelse så jeg tænker samme løn?");
             responses.Add("N4", "Njaa, jeg tænker samme løn?");
             responses.Add("D4", "Jeg mener du allerede du får nok i løn?");
 
@@ -144,6 +146,8 @@ namespace Forhandlingsspil
             textures[8] = content.Load<Texture2D>(@"Forhandler\udvalgte\slut");
             textures[9] = content.Load<Texture2D>(@"Forhandler\udvalgte\forb");
             textures[10] = content.Load<Texture2D>(@"Forhandler\udvalgte\fyrst");
+
+            speechBubble = content.Load<Texture2D>(@"Forhandler\Negotiator");
             
             //Sets the texture to the preparing fase
             texture = textures[9];
@@ -176,9 +180,10 @@ namespace Forhandlingsspil
             //Draws the responese only after the preparingfase
             if (!GameWorld.isPreparing)
             {
-                spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 40), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                spriteBatch.Draw(speechBubble, new Vector2(GameWorld.windowWitdh / 2 - speechBubble.Width / 2, 20), new Rectangle(0, 0, 850, 75), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.99f);
+                spriteBatch.DrawString(GameWorld.font, curText, new Vector2((GameWorld.windowWitdh / 2) - (GameWorld.font.MeasureString(curText).X / 2), 30 + speechBubble.Height / 2 - GameWorld.font.MeasureString(curText).Y), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
                 if (!GameWorld.gameOver)
-                    spriteBatch.DrawString(GameWorld.font, "Humør: " + mood.ToString(), new Vector2(10, 20), textColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+                    spriteBatch.DrawString(GameWorld.font, "Humør: " + mood.ToString(), new Vector2(GameWorld.windowWitdh - GameWorld.font.MeasureString("Humør: " + mood.ToString()).X - 150, 90), textColor, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
             }
             base.Draw(spriteBatch);
         }
