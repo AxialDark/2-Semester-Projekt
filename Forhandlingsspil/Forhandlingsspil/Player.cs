@@ -84,7 +84,7 @@ namespace Forhandlingsspil
 
             #region Adding Statements to Dictionaries
             honestDic.Add("HO0", new Statement("HO0", new Vector2(10, height), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Honest,
-                "Hej jeg tænkte på at jeg " + Environment.NewLine + "skulle have 39.000kr." + Environment.NewLine + "mere om måneden", 0, 4000));
+                "Hej jeg tænkte på at jeg " + Environment.NewLine + "skulle have 39.000kr." + Environment.NewLine + "om måneden", 0, 4000));
             humorousDic.Add("HU0", new Statement("HU0", new Vector2(380, height), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Humorous,
                 "Dav jeg forstillede mig at" + Environment.NewLine + "skulle have 36.000kr." + Environment.NewLine + "om måneden", 0, 1000));
             sneakyDic.Add("S0", new Statement("S0", new Vector2(750, height), 1, 1, new Rectangle(0, 0, 200, 50), StatementType.Sneaky,
