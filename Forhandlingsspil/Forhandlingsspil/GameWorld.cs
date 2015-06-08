@@ -67,6 +67,8 @@ namespace Forhandlingsspil
             myContent = Content;
             base.Initialize();
 
+            this.Window.Title = "Forhandleren";
+
             //Makes the gamewindow
             graphics.PreferredBackBufferWidth = (1280 / 4) * 3;
             graphics.PreferredBackBufferHeight = (960 / 4) * 3 + 20;
