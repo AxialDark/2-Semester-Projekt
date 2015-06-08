@@ -216,7 +216,10 @@ namespace Forhandlingsspil
                     break;
 
                 case 2:
+                    GameWorld.gameOver = true;
+                    GameWorld.endTimer.Start();
                     Negotiator.Instance.SwitchText("6");
+                    Negotiator.Instance.SwitchTexture("End", 0);
                     Player.Instance.Salary += Player.Instance.HonestDic["HO2"].SalaryChangeValue;
                     break;
 

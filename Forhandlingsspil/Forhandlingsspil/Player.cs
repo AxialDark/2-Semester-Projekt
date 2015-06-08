@@ -15,7 +15,7 @@ namespace Forhandlingsspil
         private Dictionary<string, Statement> honestDic = new Dictionary<string, Statement>();
         private Dictionary<string, Statement> humorousDic = new Dictionary<string, Statement>();
         private Dictionary<string, Statement> sneakyDic = new Dictionary<string, Statement>();
-        
+
         private int salary;
         private NegotiatingTrick negotiatingTrick;
         private static Player instance;
