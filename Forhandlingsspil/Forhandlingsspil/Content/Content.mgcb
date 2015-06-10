@@ -25,3 +25,15 @@
 /processorParam:TextureFormat=Compressed
 /build:SmallFont.spritefont
 
+#begin MediumFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:MediumFont.spritefont
+
+#begin IntroFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:IntroFont.spritefont
+

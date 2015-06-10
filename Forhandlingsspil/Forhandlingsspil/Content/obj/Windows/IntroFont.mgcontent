@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Bruger/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/IntroFont.spritefont</SourceFile>
+  <SourceTime>2015-06-05T12:05:27.4466102+02:00</SourceTime>
+  <DestFile>C:/Users/Bruger/Documents/2-Semester-Projekt/Forhandlingsspil/Forhandlingsspil/Content/bin/Windows/IntroFont.xnb</DestFile>
+  <DestTime>2015-06-08T12:48:57.0666135+02:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2015-03-16T04:01:46+01:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2015-03-16T04:01:46+01:00</ProcessorTime>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

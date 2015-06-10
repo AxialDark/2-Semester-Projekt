@@ -11,11 +11,11 @@ namespace Forhandlingsspil
 {
     class Statement : SpriteObject
     {
+        #region Fields
         private int salaryChangeValue;
         private int moodChangeValue;
         private string statementText;
         private StatementType type;
-
         private bool buttonClicked = true;
         #region USED IN DEBUG
         private bool question = false;
@@ -25,8 +25,10 @@ namespace Forhandlingsspil
         private bool isClickable = false;
         private string key;
         private Texture2D icon;
-        private float scaly;
-        private Rectangle recty;
+        private float iconScale;
+        private Rectangle iconRect;
+        #endregion
+        #region Properties
         public string StatementText
         {
             get { return statementText; }
@@ -35,6 +37,7 @@ namespace Forhandlingsspil
         {
             get { return salaryChangeValue; }
         }
+        #endregion
 
         /// <summary>
         /// THe Constructor for the Statement class
@@ -61,22 +64,23 @@ namespace Forhandlingsspil
 
             if (type == StatementType.Honest)
             {
-                this.scaly = 0.15f;
-                this.recty = new Rectangle(0, 0, 640, 480);
+                this.iconScale = 0.15f;
+                this.iconRect = new Rectangle(0, 0, 640, 480);
             }
             else if (type == StatementType.Humorous)
             {
-                this.scaly = 0.2f;
-                this.recty = new Rectangle(0, 0, 300, 300);
+                this.iconScale = 0.2f;
+                this.iconRect = new Rectangle(0, 0, 300, 300);
             }
             else if (type == StatementType.Sneaky)
             {
-                this.scaly = 0.3f;
-                this.recty = new Rectangle(0, 0, 300, 300);
+                this.iconScale = 0.3f;
+                this.iconRect = new Rectangle(0, 0, 300, 300);
             }
 
             LoadContent(GameWorld.myContent);
         }
+
         /// <summary>
         /// Used to load content when the game starts
         /// </summary>
@@ -84,7 +88,8 @@ namespace Forhandlingsspil
         public override void LoadContent(ContentManager content)
         {
             texture = content.Load<Texture2D>(@"white");
-
+	    
+	        //Loads the right texture based on the type of Statement
             if (type == StatementType.Honest)
             {
                 icon = content.Load<Texture2D>(@"Honest");
@@ -106,12 +111,15 @@ namespace Forhandlingsspil
         /// <param name="gameTime">From the monogame framework, counts the time</param>
         public override void Update(GameTime gameTime)
         {
+            //Makes so the player can't keep the mousebutton down
             if (!isClickable)
             {
                 click = DateTime.Now.AddMilliseconds(2);
                 isClickable = true;
             }
+            //Used in DEBUG for removing some tekst
             RemoveText();
+
             MouseControl();
             base.Update(gameTime);
         }
@@ -122,14 +130,9 @@ namespace Forhandlingsspil
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            spriteBatch.DrawString(GameWorld.smallFont, statementText, position, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
+            spriteBatch.DrawString(GameWorld.smallFont, statementText, position + new Vector2(5, 0), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, 1.0f);
 
-            spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * scaly) / 2), position.Y + 50), recty, Color.White, 0f, origin, scaly, SpriteEffects.None, layer);
-
-            //if (type == StatementType.Humorous)
-            //{
-            //    spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * 0.2f) / 2), position.Y + 50), new Rectangle(0, 0, 300, 300), Color.White, 0f, origin, 0.2f, SpriteEffects.None, layer);
-            //}
+            spriteBatch.Draw(icon, new Vector2(position.X + 100 - ((icon.Width * iconScale) / 2), position.Y + 50), iconRect, Color.White, 0f, origin, iconScale, SpriteEffects.None, layer);
 
             #if DEBUG
             if (question)
@@ -144,11 +147,13 @@ namespace Forhandlingsspil
         private void MouseControl()
         {
             Vector2 mousePosition = Mouse.GetState().Position.ToVector2();
-
+            
+            //if the mouse is positioned somewhere on the Statement button, runs the MouseClick method
             if (mousePosition.X >= position.X && mousePosition.X <= position.X + 200)
             {
                 if (mousePosition.Y >= position.Y && mousePosition.Y <= position.Y + 50 && click < DateTime.Now)
                 {
+                    //Changes the buttons color when mouse hovers over the button
                     color = Color.Red;
                     MouseClick();
                 }
@@ -165,9 +170,11 @@ namespace Forhandlingsspil
             {
                 color = Color.Blue;
                 buttonClicked = true;
+                //Used in DEBUG
                 if (!question)
                     remove = DateTime.Now.AddSeconds(5);
                 question = true;
+
                 Player.Instance.Keys.Add(key);
                 Negotiator.Instance.SwitchMood(moodChangeValue);
                 Player.Instance.Salary += salaryChangeValue;

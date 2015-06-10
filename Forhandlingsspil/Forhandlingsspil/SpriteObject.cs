@@ -10,6 +10,7 @@ namespace Forhandlingsspil
 {
     class SpriteObject
     {
+        #region Fields
         protected Vector2 position;
         protected float scale;
         protected float layer;
@@ -17,6 +18,7 @@ namespace Forhandlingsspil
         protected Rectangle rect;
         protected Texture2D texture;
         protected Color color;
+        #endregion
 
         public SpriteObject(Vector2 position, float scale, float layer, Rectangle rect)
         {
